@@ -1,13 +1,13 @@
 package techmarket.model.dispositivos;
 
-import techmarket.utils.IdGenerator;
+import techmarket.utils.IdMouseGenerator;
 
 public class Mouse extends DispositivosDeEntrada {
   private int id;
   private int cantidadBotones;
   
   public Mouse(String tipo, String marca, int cantidadBotones) {
-    id = IdGenerator.nextId();
+    id = IdMouseGenerator.nextId();
     super(tipo, marca);
     this.cantidadBotones = cantidadBotones;
   }

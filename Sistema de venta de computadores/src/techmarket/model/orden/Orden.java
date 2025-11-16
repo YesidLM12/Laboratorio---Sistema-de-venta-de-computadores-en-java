@@ -7,7 +7,7 @@ import techmarket.utils.IdOrderGenerator;
 import java.util.List;
 
 public class Orden {
-  private int idOrden = IdOrderGenerator.nextId();
+  private final int idOrden = IdOrderGenerator.nextId();
   private Cliente cliente;
   private List<Computadora>  computadoras = new java.util.ArrayList<>();
   
