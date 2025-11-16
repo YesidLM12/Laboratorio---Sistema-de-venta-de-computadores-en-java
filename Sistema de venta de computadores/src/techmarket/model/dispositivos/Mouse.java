@@ -19,6 +19,6 @@ public class Mouse extends DispositivosDeEntrada {
   
   @Override
   public String toString() {
-    return super.toString() + " Cantidad de botones=" + cantidadBotones + ".";
+    return "Mouse: " + super.toString() + " Cantidad de botones=" + cantidadBotones + ".\n";
   }
 }

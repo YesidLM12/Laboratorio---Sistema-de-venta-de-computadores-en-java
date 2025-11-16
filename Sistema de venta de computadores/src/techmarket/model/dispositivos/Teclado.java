@@ -22,6 +22,6 @@ public class Teclado extends DispositivosDeEntrada{
 
   @Override
   public String toString() {
-    return super.toString() + " Tipo de teclado=" + tipoTeclado + ".";
+    return "Teclado: " + super.toString() + " Tipo de teclado: " + tipoTeclado + ".\n";
   }
 }

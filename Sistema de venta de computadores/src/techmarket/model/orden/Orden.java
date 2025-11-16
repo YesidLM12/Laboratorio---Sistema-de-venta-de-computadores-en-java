@@ -1,21 +1,17 @@
 package techmarket.model.orden;
 
+import techmarket.model.cliente.Cliente;
 import techmarket.model.computadora.Computadora;
-import techmarket.utils.IdGenerator;
+import techmarket.utils.IdOrderGenerator;
 
 import java.util.List;
 
 public class Orden {
-  private int idOrden;
+  private int idOrden = IdOrderGenerator.nextId();
   private Cliente cliente;
-  private List<Computadora>  computadoras;
+  private List<Computadora>  computadoras = new java.util.ArrayList<>();
   
-  public Orden(int idOrden, Cliente cliente, List<Computadora> computadoras) {
-    idOrden = IdGenerator.nextId();
-    this.idOrden = idOrden;
-    this.cliente = cliente;
-    this.computadoras = computadoras;
-  }
+ 
   
   public int getIdOrden() {
     return idOrden;
