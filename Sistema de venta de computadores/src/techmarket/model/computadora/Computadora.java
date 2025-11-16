@@ -1,0 +1,62 @@
+package techmarket.model.computadora;
+
+import techmarket.model.dispositivos.Monitor;
+import techmarket.model.dispositivos.Mouse;
+import techmarket.model.dispositivos.Teclado;
+import techmarket.utils.IdGenerator;
+
+
+public class Computadora{
+  private final int idComputadora;
+  private final String nombreComputadora;
+  private double precio;
+  private final Monitor monitor;
+  private final Teclado teclado;
+  private final Mouse mouse;
+  
+  public Computadora(String nombreComputadora, double precio, Monitor monitor, Teclado teclado, Mouse mouse) {
+    this.idComputadora = IdGenerator.nextId();
+    this.nombreComputadora = nombreComputadora;
+    this.precio = precio;
+    this.monitor = monitor;
+    this.teclado = teclado;
+    this.mouse = mouse;
+  }
+  
+  public int getIdComputadora() {
+    return idComputadora;
+  }
+  
+  public String getNombreComputadora() {
+    return nombreComputadora;
+  }
+  
+  public Monitor getMonitor() {
+    return monitor;
+  }
+  
+  public Teclado getTeclado() {
+    return teclado;
+  }
+  
+  public Mouse getMouse() {
+    return mouse;
+  }
+  
+  public double calcularPrecioTotal() {
+    double precioTotal = 0;
+    precioTotal += monitor.getPrecio();
+    precioTotal += teclado.getPrecio();
+    precioTotal += mouse.getPrecio();
+    return precioTotal;
+  }
+  
+  public double getPrecio() {
+    return precio;
+  }
+  
+  @Override
+  public String toString() {
+    return "Computadora{" + "idComputadora=" + idComputadora + ", nombreComputadora='" + nombreComputadora + '\'' + ", monitor=" + monitor + ", teclado=" + teclado + ", mouse=" + mouse + '}';
+  }
+}
