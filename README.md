@@ -60,7 +60,7 @@ src/
 
 
 ## Diagrama de relaciones 
-![Diagrama de clases](public/Diagrama%20ULM%20sistema%20vemta%20de%20computadores.png)
+![Diagrama de clases](Sistema%20de%20venta%20de%20computadores/public/Diagrama%20ULM%20sistema%20vemta%20de%20computadores.png)
 
 - Teclado -> hereda de -> DispositivoEntrada
 - Mouse -> hereda de -> DispositivoEntrada
