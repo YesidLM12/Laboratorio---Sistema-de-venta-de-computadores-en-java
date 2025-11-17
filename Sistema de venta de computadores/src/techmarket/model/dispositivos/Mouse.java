@@ -7,9 +7,9 @@ public class Mouse extends DispositivosDeEntrada {
   private int cantidadBotones;
   private double precio;
   
-  public Mouse(String tipo, String marca, int cantidadBotones, double precio) {
+  public Mouse(String marca, int cantidadBotones, double precio) {
     id = IdGenerator.generarIdMouse();
-    super(tipo, marca);
+    super(marca);
     this.cantidadBotones = cantidadBotones;
     this.precio = precio;
   }

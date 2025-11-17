@@ -7,11 +7,15 @@ public class Teclado extends DispositivosDeEntrada{
   private String tipoTeclado;
   private double precio;
   
-  public Teclado(String tipo, String marca, String tipoTeclado, double precio) {
+  public Teclado(String marca, String tipoTeclado, double precio) {
     id = IdGenerator.generarIdTeclado();
-    super(tipo, marca);
+    super(marca);
     this.tipoTeclado = tipoTeclado;
     this.precio = precio;
+  }
+  
+  public int getId() {
+    return id;
   }
   
   public Teclado(String tipo, String marca) {

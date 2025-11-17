@@ -1,0 +1,111 @@
+package techmarket.view;
+
+import techmarket.services.ClienteService;
+import techmarket.services.ComputadoraService;
+import techmarket.services.Inventarioservice;
+import techmarket.services.OrdenService;
+import techmarket.utils.InputReader;
+
+public class MenuApp {
+  
+  private final ComputadoraService computadoraService = new ComputadoraService();
+  private final Inventarioservice inventarioservice = new Inventarioservice();
+  private final ClienteService clienteService = new ClienteService();
+  private final OrdenService ordenService = new OrdenService();
+  
+  
+  public void iniciar(){
+    cargarDatos();
+    mostrarMenuPrincipal();
+    guardarDatos();
+  }
+  
+  
+  private void mostrarMenuPrincipal(){
+    int opcion;
+    
+    do {
+      System.out.println("\n===== SISTEMA DE VENTAS TECHMARKET =====");
+      System.out.println("1. Gestión de inventario");
+      System.out.println("2. Gestión de clientes");
+      System.out.println("3. Crear computadora");
+      System.out.println("4. Crear orden");
+      System.out.println("5. Mostrar órdenes");
+      System.out.println("6. Buscar");
+      System.out.println("0. Salir");
+      
+      opcion = InputReader.readInt("Seleccione una opción: ");
+      
+      switch (opcion) {
+        case 1 -> opcionGestionInventario();
+        case 2 -> opcionGestionClientes();
+        case 3 -> opcionCrearComputadora();
+        case 4 -> opcionCrearOrden();
+        case 5 -> opcionMostrarOrdenes();
+        case 6 -> opcionBuscar();
+        case 0 -> System.out.println("Saliendo del sistema. ¡Hasta luego!");
+        default -> System.out.println("Opción inválida. Por favor, intente de nuevo.");
+      }
+    } while (opcion != 0);
+  }
+  
+  
+  
+  private void opcionGestionInventario(){
+    int opcion;
+    
+    do {
+      System.out.println("\n--- Gestión de Inventario ---");
+      System.out.println("1. Listar Inventario");
+      System.out.println("2. Agregar Teclado");
+      System.out.println("3. Agregar Mouse");
+      System.out.println("4. Agregar Monitor");
+      System.out.println("5. Eliminar Teclado");
+      System.out.println("6. Eliminar Mouse");
+      System.out.println("7. Eliminar Monitor");
+      System.out.println("0. Volver");
+      
+      opcion = InputReader.readInt("Seleccione una opción: ");
+      
+      switch (opcion) {
+         case 1 -> Inventarioservice.mostrarInventario();
+         case 2 -> inventarioservice.agregarStockTeclado();
+         case 3 -> inventarioservice.agregarStockMouse();
+         case 4 -> inventarioservice.agregarStockMonitor();
+         case 5 -> Inventarioservice.eliminarTeclado();
+         case 6 -> Inventarioservice.eliminarMouse();
+         case 7 -> Inventarioservice.eliminarMonitor();
+         case 0 -> System.out.println("Volviendo al menú principal.");
+         default -> System.out.println("Opción inválida.");
+      }
+    } while (opcion != 0);
+  }
+  
+  private void opcionGestionClientes(){
+  
+  }
+  
+  private void opcionCrearComputadora(){
+  
+  }
+  
+  private void opcionCrearOrden(){
+  
+  }
+  
+  private void opcionMostrarOrdenes(){
+  
+  }
+  
+  private void opcionBuscar(){
+  
+  }
+  
+  private void cargarDatos(){
+  
+  }
+  
+  private void guardarDatos() {
+  
+  }
+}

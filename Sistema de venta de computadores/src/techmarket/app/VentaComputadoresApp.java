@@ -25,12 +25,12 @@ public class VentaComputadoresApp {
     // ==================================
     
     System.out.println("\n=== Caso de uso 2: Mouse y Teclado ===");
-    Mouse mouse1 = new Mouse("Bluetooth", "Dell", 3);
+    Mouse mouse1 = new Mouse("Bluetooth", "Dell", 3, 10);
     Mouse mouse2 = new Mouse("USB", "HP", 5);
-    Mouse mouse3 = new Mouse("Inalámbrico", "Acer", 2);
+    Mouse mouse3 = new Mouse("Inalámbrico", "Acer", 2, 8);
     
-    Teclado teclado1 = new Teclado("USB", "Logitech", "QWERTY");
-    Teclado teclado2 = new Teclado("Bluetooth", "Microsoft", "AZERTY");
+    Teclado teclado1 = new Teclado("USB", "Logitech", "QWERTY", 4);
+    Teclado teclado2 = new Teclado("Bluetooth", "Microsoft", "AZERTY", 6);
     
     System.out.println(mouse1);
     System.out.println(mouse2);
@@ -44,8 +44,8 @@ public class VentaComputadoresApp {
     // ==================================
     
     System.out.println("\n=== Caso de uso 3: Monitor ===");
-    Monitor monitorHP = new Monitor("HP", 15.6);
-    Monitor monitorDell = new Monitor("Dell", 14.0);
+    Monitor monitorHP = new Monitor("HP", 15.6, 120);
+    Monitor monitorDell = new Monitor("Dell", 14.0, 90);
     System.out.println(monitorHP);
     System.out.println(monitorDell);
     
@@ -58,9 +58,7 @@ public class VentaComputadoresApp {
     Computadora pc2 = new Computadora("PC Oficina", monitorDell, teclado2, mouse2);
     Computadora pc3 = new Computadora("PC Edición", monitorHP, teclado1, mouse3);
     System.out.println(pc1);
-    System.out.println("Precio total de " + pc1.getNombreComputadora() + ": $" + pc1.calcularPrecioTotal());
     System.out.println(pc2);
-    System.out.println("Precio total de " + pc2.getNombreComputadora() + ": $" + pc2.calcularPrecioTotal());
     
     
     // =====================================

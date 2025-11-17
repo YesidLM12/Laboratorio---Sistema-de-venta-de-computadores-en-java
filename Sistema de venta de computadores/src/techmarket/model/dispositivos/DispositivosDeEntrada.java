@@ -14,6 +14,11 @@ public class DispositivosDeEntrada {
     this.marca = marca;
   }
   
+  public DispositivosDeEntrada(String marca) {
+    idDispositivoEntrada = IdGenerator.nextId();
+    this.marca = marca;
+  }
+  
   public String getTipo() {
     return tipo;
   }
