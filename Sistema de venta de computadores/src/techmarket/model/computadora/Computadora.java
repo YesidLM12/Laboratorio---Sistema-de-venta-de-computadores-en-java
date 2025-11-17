@@ -3,7 +3,6 @@ package techmarket.model.computadora;
 import techmarket.model.dispositivos.Monitor;
 import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
-import techmarket.model.inventario.Inventario;
 import techmarket.utils.IdComputadoraGenerator;
 
 
@@ -14,6 +13,7 @@ public class Computadora{
   private final Monitor monitor;
   private final Teclado teclado;
   private final Mouse mouse;
+  private String descripcion;
   
   public Computadora(String nombreComputadora, Monitor monitor, Teclado teclado, Mouse mouse) {
     this.idComputadora = IdComputadoraGenerator.nextId();
@@ -43,16 +43,16 @@ public class Computadora{
     return mouse;
   }
   
-  public double calcularPrecioTotal() {
-    double precioTotal = 0;
-    precioTotal += monitor.getPrecio();
-    precioTotal += teclado.getPrecio();
-    precioTotal += mouse.getPrecio();
-    return precioTotal;
-  }
-  
   public double getPrecio() {
     return precio;
+  }
+  
+  public String getDescripcion() {
+    return descripcion;
+  }
+  
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
   }
   
   @Override

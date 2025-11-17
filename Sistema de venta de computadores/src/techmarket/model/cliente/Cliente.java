@@ -9,12 +9,11 @@ import java.util.List;
 public class Cliente {
   private int idCliente;
   private String nombre;
-  private List<Orden> historialOrdenes;
+  public List<Orden> historialOrdenes;
   
-  public Cliente(String nombre, List<Orden> historialOrdenes) {
+  public Cliente(String nombre) {
     idCliente = IdClienteGenerator.nextId();
     this.nombre = nombre;
-    this.historialOrdenes = historialOrdenes;
   }
   
   public int getIdCliente() {
