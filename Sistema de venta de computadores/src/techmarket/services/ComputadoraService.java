@@ -4,7 +4,9 @@ import techmarket.model.computadora.Computadora;
 import techmarket.model.dispositivos.Monitor;
 import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
-import techmarket.model.inventario.Inventario;
+import techmarket.utils.InputReader;
+
+import java.util.List;
 
 public class ComputadoraService {
   
@@ -14,12 +16,35 @@ public class ComputadoraService {
   // Crear computadoras
   // ==========================================
   
-  public Computadora crearComputadora(String nombre, Monitor m, Teclado t, Mouse mouse, Inventario inventario){
+  public void crearComputadora(){
+    
+    // leer datos teclado
+    String marcaTeclado = InputReader.readString("Ingrese la marca del teclado: ");
+    String tipoTeclado = InputReader.readString("Ingrese el tipo de teclado (mecanico/membrana): ");
+    double precioTeclado = InputReader.readDouble("Ingrese el precio del teclado: ");
+    
+    Teclado t = new Teclado(marcaTeclado,tipoTeclado,precioTeclado);
+    
+    
+    // leer datos mouse
+    String marcaMouse = InputReader.readString("Ingrese la marca del mouse: ");
+    int cantidadBotones = InputReader.readInt("Ingrese la cantidad de botones del mouse: ");
+    double precioMouse = InputReader.readDouble("Ingrese el precio del mouse: ");
+    
+    Mouse mouse = new Mouse(marcaMouse,cantidadBotones,precioMouse);
+    
+    
+    // leer datos monitor
+    String marcaMonitor = InputReader.readString("Ingrese la marca del monitor: ");
+    double tamanio = InputReader.readDouble("Ingrese el tamaño del monitor (en pulgadas): ");
+    double precioMonitor = InputReader.readDouble("Ingrese el precio del monitor: ");
+    
+    Monitor m = new Monitor(marcaMonitor,tamanio,precioMonitor);
     
     // validar stock real
-    if (!Inventarioservice.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
-      System.out.println("No hay stock suficiente para crear la computadora gamer.");
-      return null;
+    if (!Inventarioservice.hayStockComputadores(marcaMonitor, marcaTeclado, marcaMouse, 1)) {
+      System.out.println("No hay stock suficiente para crear la computadora.");
+      return;
     }
     
     // descontar del inventario
@@ -27,21 +52,46 @@ public class ComputadoraService {
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
-      return null;
+      return;
     }
     
     // crear computadora
+    String nombre = InputReader.readString("Ingrese el nombre de la computadora: ");
     Computadora computadora = new Computadora(nombre, m, t, mouse);
     System.out.println("Computadora creada exitosamente: " + computadora);
-    return computadora;
   }
   
-  public Computadora crearComputadoraOfimatica(String nombre, Monitor m, Teclado t, Mouse mouse, Inventario inventario){
+  
+  
+  public void crearComputadoraOfimatica(){
+    
+    // leer datos teclado
+    String marcaTeclado = InputReader.readString("Ingrese la marca del teclado: ");
+    String tipoTeclado = InputReader.readString("Ingrese el tipo de teclado (mecanico/membrana): ");
+    double precioTeclado = InputReader.readDouble("Ingrese el precio del teclado: ");
+    
+    Teclado t = new Teclado(marcaTeclado,tipoTeclado,precioTeclado);
+    
+    
+    // leer datos mouse
+    String marcaMouse = InputReader.readString("Ingrese la marca del mouse: ");
+    int cantidadBotones = InputReader.readInt("Ingrese la cantidad de botones del mouse: ");
+    double precioMouse = InputReader.readDouble("Ingrese el precio del mouse: ");
+    
+    Mouse mouse = new Mouse(marcaMouse,cantidadBotones,precioMouse);
+    
+    
+    // leer datos monitor
+    String marcaMonitor = InputReader.readString("Ingrese la marca del monitor: ");
+    double tamanio = InputReader.readDouble("Ingrese el tamaño del monitor (en pulgadas): ");
+    double precioMonitor = InputReader.readDouble("Ingrese el precio del monitor: ");
+    
+    Monitor m = new Monitor(marcaMonitor,tamanio,precioMonitor);
     
     // validar stock real
-    if (!Inventarioservice.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
-      System.out.println("No hay stock suficiente para crear la computadora ofimática.");
-      return null;
+    if (!Inventarioservice.hayStockComputadores(marcaMonitor, marcaTeclado, marcaMouse, 1)) {
+      System.out.println("No hay stock suficiente para crear la computadora.");
+      return;
     }
     
     // descontar del inventario
@@ -49,22 +99,46 @@ public class ComputadoraService {
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
-      return null;
+      return;
     }
     
     // crear computadora
+    String nombre = InputReader.readString("Ingrese el nombre de la computadora: ");
     Computadora computadora = new Computadora(nombre, m, t, mouse);
     System.out.println("Computadora ofimática creada exitosamente: " + computadora);
-    return computadora;
   }
   
   
-  public Computadora crearComputadoraGamer(String nombre, Monitor m, Teclado t, Mouse mouse, Inventario inventario){
+  
+  public void crearComputadoraGamer(){
+    
+    // leer datos teclado
+    String marcaTeclado = InputReader.readString("Ingrese la marca del teclado: ");
+    String tipoTeclado = InputReader.readString("Ingrese el tipo de teclado (mecanico/membrana): ");
+    double precioTeclado = InputReader.readDouble("Ingrese el precio del teclado: ");
+    
+    Teclado t = new Teclado(marcaTeclado,tipoTeclado,precioTeclado);
+    
+    
+    // leer datos mouse
+    String marcaMouse = InputReader.readString("Ingrese la marca del mouse: ");
+    int cantidadBotones = InputReader.readInt("Ingrese la cantidad de botones del mouse: ");
+    double precioMouse = InputReader.readDouble("Ingrese el precio del mouse: ");
+    
+    Mouse mouse = new Mouse(marcaMouse,cantidadBotones,precioMouse);
+    
+    
+    // leer datos monitor
+    String marcaMonitor = InputReader.readString("Ingrese la marca del monitor: ");
+    double tamanio = InputReader.readDouble("Ingrese el tamaño del monitor (en pulgadas): ");
+    double precioMonitor = InputReader.readDouble("Ingrese el precio del monitor: ");
+    
+    Monitor m = new Monitor(marcaMonitor,tamanio,precioMonitor);
     
     // validar stock real
-    if (!Inventarioservice.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
-      System.out.println("No hay stock suficiente para crear la computadora gamer.");
-      return null;
+    if (!Inventarioservice.hayStockComputadores(marcaMonitor, marcaTeclado, marcaMouse, 1)) {
+      System.out.println("No hay stock suficiente para crear la computadora.");
+      return;
     }
     
     // descontar del inventario
@@ -72,22 +146,45 @@ public class ComputadoraService {
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
-      return null;
+      return;
     }
     
     // crear computadora
+    String nombre = InputReader.readString("Ingrese el nombre de la computadora: ");
     Computadora computadora = new Computadora(nombre, m, t, mouse);
     System.out.println("Computadora gamer creada exitosamente: " + computadora);
-    return computadora;
   }
   
   
-  public Computadora crearComputadoraEstudiante(String nombre, Monitor m, Teclado t, Mouse mouse, Inventario inventario){
+  public void crearComputadoraEstudiante(){
+    
+    // leer datos teclado
+    String marcaTeclado = InputReader.readString("Ingrese la marca del teclado: ");
+    String tipoTeclado = InputReader.readString("Ingrese el tipo de teclado (mecanico/membrana): ");
+    double precioTeclado = InputReader.readDouble("Ingrese el precio del teclado: ");
+    
+    Teclado t = new Teclado(marcaTeclado,tipoTeclado,precioTeclado);
+    
+    
+    // leer datos mouse
+    String marcaMouse = InputReader.readString("Ingrese la marca del mouse: ");
+    int cantidadBotones = InputReader.readInt("Ingrese la cantidad de botones del mouse: ");
+    double precioMouse = InputReader.readDouble("Ingrese el precio del mouse: ");
+    
+    Mouse mouse = new Mouse(marcaMouse,cantidadBotones,precioMouse);
+    
+    
+    // leer datos monitor
+    String marcaMonitor = InputReader.readString("Ingrese la marca del monitor: ");
+    double tamanio = InputReader.readDouble("Ingrese el tamaño del monitor (en pulgadas): ");
+    double precioMonitor = InputReader.readDouble("Ingrese el precio del monitor: ");
+    
+    Monitor m = new Monitor(marcaMonitor,tamanio,precioMonitor);
     
     // validar stock real
-    if (!Inventarioservice.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
+    if (!Inventarioservice.hayStockComputadores(marcaMonitor, marcaTeclado, marcaMouse, 1)) {
       System.out.println("No hay stock suficiente para crear la computadora para estudiante.");
-      return null;
+      return;
     }
     
     // descontar del inventario
@@ -95,24 +192,42 @@ public class ComputadoraService {
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
-      return null;
+      return;
     }
     
     // crear computadora
+    String nombre = InputReader.readString("Ingrese el nombre de la computadora: ");
     Computadora computadora = new Computadora(nombre, m, t, mouse);
     System.out.println("Computadora para estudiante creada exitosamente: " + computadora);
-    return computadora;
   }
   
   // ==========================================
   // calcular precio final
   // ==========================================
   
-  public double calcularPrecioFinal(Computadora computadora){
-    double precioMonitor = computadora.getMonitor().getPrecio();
+  public double calcularPrecioFinal(List<Computadora> inventario){
+    int idComputadora = InputReader.readInt("Ingrese el ID de la computadora para calcular su precio final: ");
+    
+    Computadora computadora = null;
+    
+    // Buscar la computadora por ID
+    for (Computadora c : inventario) {
+      if (c.getIdComputadora() == idComputadora) {
+        computadora = c;
+        break;
+      }
+    }
+    
+    if (computadora == null) {
+      System.out.println("Computadora con ID " + idComputadora + " no encontrada.");
+      return 0.0;
+    }
+    
     double precioTeclado = computadora.getTeclado().getPrecio();
     double precioMouse = computadora.getMouse().getPrecio();
+    double precioMonitor = computadora.getMonitor().getPrecio();
     
     return precioMonitor + precioTeclado + precioMouse;
+    
   }
 }

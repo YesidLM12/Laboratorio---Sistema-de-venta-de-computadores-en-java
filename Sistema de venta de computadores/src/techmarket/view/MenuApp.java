@@ -82,10 +82,52 @@ public class MenuApp {
   }
   
   private void opcionGestionClientes(){
+    int opcion;
+    
+    do {
+      System.out.println("\n--- Gestión de Clientes ---");
+      System.out.println("1. Listar Clientes");
+      System.out.println("2. Agregar Cliente");
+      System.out.println("3. Buscar Cliente por ID");
+      System.out.println("4. Eliminar Cliente");
+      System.out.println("0. Volver");
+      
+      opcion = InputReader.readInt("Seleccione una opción: ");
+      
+      switch (opcion) {
+         case 1 -> ClienteService.listarClientes();
+         case 2 -> ClienteService.crearCliente();
+         case 3 -> ClienteService.buscarClientePorId();
+         case 4 -> ClienteService.eliminarClientePorId();
+         case 0 -> System.out.println("Volviendo al menú principal.");
+         default -> System.out.println("Opción inválida.");
+      }
+    } while (opcion != 0);
   
   }
   
   private void opcionCrearComputadora(){
+    int opcion;
+    
+    do {
+      System.out.println("\n--- Crear Computadora ---");
+      System.out.println("1. Crear Computadora Prediseñada");
+      System.out.println("2. Crear Computadora Gamer");
+      System.out.println("3. Crear Computadora para ofinomatica");
+      System.out.println("4. Crear Computadora para estudiantes");
+      System.out.println("0. Volver");
+      
+      opcion = InputReader.readInt("Seleccione una opción: ");
+      
+      switch (opcion) {
+         case 1 -> computadoraService.crearComputadora();
+         case 2 -> computadoraService.crearComputadoraGamer();
+         case 3 -> computadoraService.crearComputadoraOfimatica();
+         case 4 -> computadoraService.crearComputadoraEstudiante();
+         case 0 -> System.out.println("Volviendo al menú principal.");
+         default -> System.out.println("Opción inválida.");
+      }
+    } while (opcion != 0);
   
   }
   
