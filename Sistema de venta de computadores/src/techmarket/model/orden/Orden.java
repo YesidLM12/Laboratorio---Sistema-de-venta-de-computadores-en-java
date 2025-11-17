@@ -2,12 +2,13 @@ package techmarket.model.orden;
 
 import techmarket.model.cliente.Cliente;
 import techmarket.model.computadora.Computadora;
+import techmarket.utils.IdGenerator;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class Orden {
-  private final int idOrden = IdOrderGenerator.nextId();
+  private final int idOrden = IdGenerator.generarIdOrden();
   private Cliente cliente;
   private List<Computadora> computadoras = new java.util.ArrayList<>();
   private LocalDateTime fechaOrden;

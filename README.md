@@ -1,6 +1,30 @@
 # Laboratorio - Sistema de venta de computadores en java
 ## Descripción del proyecto
-Este laboratorio tiene como objetivo aplicar los principios  fundamenteales de Programación Orientada a Objetos para modelar un sitema de venta de computadores. El proyecto incluye el diseño e implementación de clases usando herencia, composición, encapsulamiento y manejo de objetos relacionados entre sí.
+Este laboratorio tiene como objetivo aplicar los principios fundamentales de Programación Orientada a Objetos (POO) para modelar un sistema de venta de computadores.
+El proyecto integra conceptos como herencia, composición, encapsulamiento, manejo de listas, modularización y separación de responsabilidades mediante el uso de servicios y repositorios.
+
+La aplicación simula el funcionamiento básico de una tienda de equipos de cómputo: permite gestionar dispositivos, ensamblar computadoras, administrar clientes, registrar órdenes de compra, manejar inventario y persistir información. Todo esto desde una interfaz interactiva por consola.
+
+## Funcionalidades principales
+El sistema permite:
+
+- Crear dispositivos: monitores, ratones y teclados.
+
+- Registrar clientes con información básica.
+
+- Construir computadoras combinando distintos dispositivos.
+
+- Gestionar inventario y validar disponibilidad.
+
+- Registrar órdenes de compra asociadas a un cliente.
+
+- Calcular valores totales de computadoras y órdenes.
+
+- Mostrar información detallada de cada objeto mediante toString().
+
+- Guardar y cargar datos persistentes mediante archivos.
+
+- Interactuar con el sistema a través de un menú en consola.
 
 ## Estructura del proyecto
 
@@ -72,13 +96,25 @@ src/
 - Inventario -> tiene -> Computadora (relación de agregación)
 
 ## Casos de prueba Realizados
-Se ejecutaron casos de uso para comprobar el correcto funcionamiento del sistema: 
-- Creación de dispositivos individuales
-- Validación de Ids autoincrementales
-- Construcción de computadores completos
-- Gestión de órdenes con múltiples computadores
-- Reutilización de componentes
-- Impresión de información mediante toString()
+Durante el desarrollo se ejecutaron diferentes pruebas para garantizar el correcto funcionamiento del sistema:
+
+- reación y visualización de dispositivos individuales.
+
+- Validación del sistema de IDs autoincrementales.
+
+- Construcción de computadoras completas mediante composición.
+
+- Gestión de órdenes con múltiples computadoras.
+
+- Asociación de órdenes a clientes.
+
+- Validación de stock disponible en el inventario.
+
+- Impresión detallada de la información usando toString().
+
+- Ensayos del menú interactivo para registrar y consultar datos.
+
+- Pruebas de persistencia: guardar y cargar datos desde archivo.
 
 ## Evidencia y Resultados
 El programa compila correctamente y genera salidas coherentes  que reflejan la estructura de los objetos creados. Cada prueba evidencia que las clases se relacionan correctamente mediante herencia y composición.
