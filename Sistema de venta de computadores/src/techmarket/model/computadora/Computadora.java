@@ -3,8 +3,8 @@ package techmarket.model.computadora;
 import techmarket.model.dispositivos.Monitor;
 import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
+import techmarket.model.inventario.Inventario;
 import techmarket.utils.IdComputadoraGenerator;
-import techmarket.utils.IdGenerator;
 
 
 public class Computadora{

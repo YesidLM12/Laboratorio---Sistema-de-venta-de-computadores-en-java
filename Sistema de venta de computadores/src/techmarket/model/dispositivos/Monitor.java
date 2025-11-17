@@ -7,10 +7,11 @@ public class Monitor extends DispositivosDeEntrada {
   private double tamanio;
   private double precio;
 
-  public Monitor(String marca, double tamanio) {
+  public Monitor(String marca, double tamanio, double precio) {
     super("Monitor", marca);
     idMonitor = IdMonitorGenerator.nextId();
     this.tamanio = tamanio;
+    this.precio = precio;
   }
 
   public int getIdMonitor() {
