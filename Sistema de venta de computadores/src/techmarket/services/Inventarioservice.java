@@ -47,7 +47,7 @@ public class Inventarioservice {
   }
   
   // Para computadoras con marcas específicas
-  public boolean hayStockComputadores(String marcaMonitor, String marcaTeclado, String marcaMouse, int cantidad){
+  public static boolean hayStockComputadores(String marcaMonitor, String marcaTeclado, String marcaMouse, int cantidad){
     long cantidadMonitores = monitores.stream()
             .filter(monitor -> monitor.getMarca().equalsIgnoreCase(marcaMonitor))
             .count();

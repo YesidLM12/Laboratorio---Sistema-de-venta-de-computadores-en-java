@@ -1,6 +1,6 @@
 package techmarket.model.dispositivos;
 
-import techmarket.utils.IdMonitorGenerator;
+import techmarket.utils.IdGenerator;
 
 public class Monitor extends DispositivosDeEntrada {
   private final int idMonitor;
@@ -9,7 +9,7 @@ public class Monitor extends DispositivosDeEntrada {
 
   public Monitor(String marca, double tamanio, double precio) {
     super("Monitor", marca);
-    idMonitor = IdMonitorGenerator.nextId();
+    idMonitor = IdGenerator.generarIdMonitor();
     this.tamanio = tamanio;
     this.precio = precio;
   }

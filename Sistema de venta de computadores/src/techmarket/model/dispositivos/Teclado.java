@@ -1,6 +1,6 @@
 package techmarket.model.dispositivos;
 
-import techmarket.utils.IdTecladoGenerator;
+import techmarket.utils.IdGenerator;
 
 public class Teclado extends DispositivosDeEntrada{
   private int id;
@@ -8,7 +8,7 @@ public class Teclado extends DispositivosDeEntrada{
   private double precio;
   
   public Teclado(String tipo, String marca, String tipoTeclado, double precio) {
-    id = IdTecladoGenerator.nextId();
+    id = IdGenerator.generarIdTeclado();
     super(tipo, marca);
     this.tipoTeclado = tipoTeclado;
     this.precio = precio;

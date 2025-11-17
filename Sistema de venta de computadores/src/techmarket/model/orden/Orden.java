@@ -2,7 +2,6 @@ package techmarket.model.orden;
 
 import techmarket.model.cliente.Cliente;
 import techmarket.model.computadora.Computadora;
-import techmarket.utils.IdOrderGenerator;
 
 import java.time.LocalDateTime;
 import java.util.List;

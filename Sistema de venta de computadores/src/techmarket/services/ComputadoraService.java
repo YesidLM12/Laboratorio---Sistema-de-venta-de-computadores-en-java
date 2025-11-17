@@ -15,13 +15,13 @@ public class ComputadoraService {
   public Computadora crearComputadora(String nombre, Monitor m, Teclado t, Mouse mouse, Inventario inventario){
     
     // validar stock real
-    if (!inventario.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
+    if (!Inventarioservice.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora gamer.");
       return null;
     }
     
     // descontar del inventario
-    boolean descontado = inventario.descontarStock(m,t,mouse);
+    boolean descontado = Inventarioservice.descontarStock(m,t,mouse);
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
@@ -37,13 +37,13 @@ public class ComputadoraService {
   public Computadora crearComputadoraOfimatica(String nombre, Monitor m, Teclado t, Mouse mouse, Inventario inventario){
     
     // validar stock real
-    if (!inventario.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
+    if (!Inventarioservice.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora ofimática.");
       return null;
     }
     
     // descontar del inventario
-    boolean descontado = inventario.descontarStock(m,t,mouse);
+    boolean descontado = Inventarioservice.descontarStock(m,t,mouse);
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
@@ -60,13 +60,13 @@ public class ComputadoraService {
   public Computadora crearComputadoraGamer(String nombre, Monitor m, Teclado t, Mouse mouse, Inventario inventario){
     
     // validar stock real
-    if (!inventario.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
+    if (!Inventarioservice.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora gamer.");
       return null;
     }
     
     // descontar del inventario
-    boolean descontado = inventario.descontarStock(m,t,mouse);
+    boolean descontado = Inventarioservice.descontarStock(m,t,mouse);
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
@@ -83,13 +83,13 @@ public class ComputadoraService {
   public Computadora crearComputadoraEstudiante(String nombre, Monitor m, Teclado t, Mouse mouse, Inventario inventario){
     
     // validar stock real
-    if (!inventario.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
+    if (!Inventarioservice.hayStockComputadores(m.getMarca(), t.getMarca(), mouse.getMarca(), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora para estudiante.");
       return null;
     }
     
     // descontar del inventario
-    boolean descontado = inventario.descontarStock(m,t,mouse);
+    boolean descontado = Inventarioservice.descontarStock(m,t,mouse);
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");

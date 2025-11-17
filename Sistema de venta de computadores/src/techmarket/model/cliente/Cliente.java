@@ -1,7 +1,6 @@
 package techmarket.model.cliente;
 
 import techmarket.model.orden.Orden;
-import techmarket.utils.IdClienteGenerator;
 import techmarket.utils.IdGenerator;
 
 import java.util.List;
@@ -12,7 +11,7 @@ public class Cliente {
   public List<Orden> historialOrdenes;
   
   public Cliente(String nombre) {
-    idCliente = IdClienteGenerator.nextId();
+    idCliente = IdGenerator.generarIdCliente();
     this.nombre = nombre;
   }
   

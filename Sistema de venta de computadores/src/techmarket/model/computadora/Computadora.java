@@ -3,7 +3,7 @@ package techmarket.model.computadora;
 import techmarket.model.dispositivos.Monitor;
 import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
-import techmarket.utils.IdComputadoraGenerator;
+import techmarket.utils.IdGenerator;
 
 
 public class Computadora{
@@ -16,7 +16,7 @@ public class Computadora{
   private String descripcion;
   
   public Computadora(String nombreComputadora, Monitor monitor, Teclado teclado, Mouse mouse) {
-    this.idComputadora = IdComputadoraGenerator.nextId();
+    this.idComputadora = IdGenerator.generarIdComputadora();
     this.nombreComputadora = nombreComputadora;
     this.monitor = monitor;
     this.teclado = teclado;
