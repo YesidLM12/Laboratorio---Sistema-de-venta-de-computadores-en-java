@@ -8,7 +8,7 @@ import java.util.List;
 public class Cliente {
   private final int idCliente;
   private String nombre;
-  public List<Orden> historialOrdenes;
+  public static List<Orden> historialOrdenes;
   
   public Cliente(String nombre) {
     idCliente = IdGenerator.generarIdCliente();
@@ -31,12 +31,12 @@ public class Cliente {
     return historialOrdenes;
   }
   
-  public void agregarOrden(Orden orden) {
-    this.historialOrdenes.add(orden);
+  public static void agregarOrden(Orden orden) {
+    historialOrdenes.add(orden);
   }
   
   @Override
   public String toString() {
-    return "Cliente{" + "idCliente=" + idCliente + ", nombre='" + nombre + '\'' + ", historialOrdenes=" + historialOrdenes + '}';
+    return "id: "+ getIdCliente() + ", " +"nombre: " + nombre + ", historialOrdenes: " + historialOrdenes;
   }
 }

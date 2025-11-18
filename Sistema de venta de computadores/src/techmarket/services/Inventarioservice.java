@@ -6,15 +6,14 @@ import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
 import techmarket.utils.InputReader;
 
-
 import static techmarket.model.inventario.Inventario.*;
 
 public class Inventarioservice {
-  
   // ===========================================
   // Agregar stock
   // ===========================================
   
+  // Agregar Monitor
   public void agregarStockMonitor(){
     String marca = InputReader.readString("Agrega la marca del monitor: ");
     double pulgadas = InputReader.readDouble("Agrega las pulgadas del monitor: ");
@@ -25,6 +24,8 @@ public class Inventarioservice {
     System.out.println("Monitor agregado al inventario.");
   }
   
+  
+  // Agregar Teclado
   public void agregarStockTeclado() {
     String marca = InputReader.readString("Agrega la marca del teclado: ");
     String tipoTeclado = InputReader.readString("Agrega el tipo de teclado: ");
@@ -35,6 +36,8 @@ public class Inventarioservice {
     System.out.println("Teclado agregado al inventario.");
   }
   
+  
+  // Agregar mouse
   public void agregarStockMouse() {
     String marca = InputReader.readString("Agrega la marca del mouse: ");
     int cantidadDeBotones = InputReader.readInt("Agrega la cantidad de botones del mouse: ");
@@ -45,26 +48,54 @@ public class Inventarioservice {
     System.out.println("Mouse agregado al inventario.");
   }
   
-  public void agregarStockComputadora(Computadora computadora){
-    computadoras.add(computadora);
+  
+  // Agregar Computadora
+  public void agregarStockComputadora(){
+    Teclado t = null;
+    Monitor m = null;
+    Mouse mou = null;
+    
+    int idMonitor = InputReader.readInt("Ingresa el id del monitor que te interesa para esta computadora: ");
+    for(Monitor monitor : monitores) {
+      if (monitor.getIdMonitor() == idMonitor) {
+        m = monitor;
+        break;
+      }
+    }
+    
+    int idTeclado = InputReader.readInt("Ingresa el id del teclado que te interesa para este monitor: ");
+    for ( Teclado teclado : teclados){
+      if ( teclado.getId() == idTeclado) {
+        t = teclado;
+      }
+    }
+    
+    
+    int idMouse = InputReader.readInt("Ingresa el id del mouse que te interesa para este monitor: ");
+    for ( Mouse mouse : mouses){
+      if ( mouse.getIdMouse() == idMouse){
+        mou = mouse;
+      }
+    }
+    
+    double precio = InputReader.readDouble("Ingrese el precio de la computadora: ");
+    
+    Computadora c = new Computadora(m,t,mou,precio);
+    computadoras.add(c);
     System.out.println("Computadora agregada al inventario.");
   }
+  
+  
+  
   
   // ===========================================
   // Disponibilidad de stock
   // ===========================================
   
   // Para computadoras genéricas
-  public boolean hayStockComputadores(int cantidad){
-    return monitores.size() >= cantidad &&
-           teclados.size() >= cantidad &&
-           mouses.size() >= cantidad;
-  }
-  
   public static boolean hayStockComputadores(){
-    return !monitores.isEmpty() &&
-           !teclados.isEmpty() &&
-           !mouses.isEmpty();
+    int cantidad = InputReader.readInt("Ingresa la cantidad de computadoras a consultar: ");
+    return computadoras.size() >= cantidad;
   }
   
   // Para computadoras con marcas específicas
@@ -81,41 +112,10 @@ public class Inventarioservice {
             .filter(mouse -> mouse.getMarca().equalsIgnoreCase(marcaMouse))
             .count();
     
-    return cantidadMonitores >= cantidad &&
-            cantidadTeclados >= cantidad &&
-            cantidadMouses >= cantidad;
+    return cantidadMonitores < cantidad || cantidadTeclados < cantidad || cantidadMouses < cantidad;
   }
   
-  // =========================================================
-  // Verificar si exsite stock de cada pieza
-  // =========================================================
   
-  public Monitor obtenerMonitorDisponible(String marca){
-    for (Monitor monitor : monitores) {
-      if (monitor.getMarca().equalsIgnoreCase(marca)) {
-        return monitor;
-      }
-    }
-    return null;
-  }
-  
-  public Teclado obtenerTecladoDisponible(String marca){
-    for (Teclado teclado : teclados) {
-      if (teclado.getMarca().equalsIgnoreCase(marca)) {
-        return teclado;
-      }
-    }
-    return null;
-  }
-  
-  public Mouse obtenerMouseDisponible(String marca){
-    for (Mouse mouse : mouses) {
-      if (mouse.getMarca().equalsIgnoreCase(marca)) {
-        return mouse;
-      }
-    }
-    return null;
-  }
   
   // ==========================================================
   // Descontar Stock
@@ -144,6 +144,9 @@ public class Inventarioservice {
     return true;
   }
   
+  
+  
+  
   // =========================================================
   // Eliminar stock por ID
   // =========================================================
@@ -167,6 +170,8 @@ public class Inventarioservice {
     }
   }
   
+  
+  
   public static void eliminarMouse(){
     int idMouse = InputReader.readInt("Ingrese el ID del mouse a eliminar: ");
     Mouse mouseAEliminar = null;
@@ -187,6 +192,7 @@ public class Inventarioservice {
   }
   
   
+  
   public static void eliminarMonitor(){
     int idMonitor = InputReader.readInt("Ingrese el ID del monitor a eliminar: ");
     Monitor monitorAEliminar = null;
@@ -205,6 +211,8 @@ public class Inventarioservice {
       System.out.println("No se encontró un monitor con el ID proporcionado.");
     }
   }
+  
+  
   
   // =========================================================
   // Buscar por ID
@@ -263,23 +271,42 @@ public class Inventarioservice {
   }
   
   
+  
   // =========================================================
   // Método para mostrar el inventario completo
   // =========================================================
   
   public static void mostrarInventario(){
+    
     System.out.println("----- Inventario de Teclados -----");
     for (Teclado teclado : teclados) {
+      
+      if (teclados.isEmpty()){
+        System.out.println("No hay ariticulos en el inventario.\n");
+      }
+      
       System.out.println(teclado);
     }
     
+    
     System.out.println("----- Inventario de Mouses -----");
     for (Mouse mouse : mouses) {
+      
+      if (teclados.isEmpty()){
+        System.out.println("No hay ariticulos en el inventario.\n");
+      }
+      
       System.out.println(mouse);
     }
     
     System.out.println("----- Inventario de Monitores -----");
+    
     for (Monitor monitor : monitores) {
+      
+      if (teclados.isEmpty()){
+        System.out.println("No hay ariticulos en el inventario.\n");
+      }
+      
       System.out.println(monitor);
     }
   }

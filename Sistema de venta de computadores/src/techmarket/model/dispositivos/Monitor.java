@@ -8,7 +8,7 @@ public class Monitor extends DispositivosDeEntrada {
   private double precio;
 
   public Monitor(String marca, double tamanio, double precio) {
-    super("Monitor", marca);
+    super(marca);
     idMonitor = IdGenerator.generarIdMonitor();
     this.tamanio = tamanio;
     this.precio = precio;
@@ -17,7 +17,11 @@ public class Monitor extends DispositivosDeEntrada {
   public int getIdMonitor() {
     return idMonitor;
   }
-
+  
+  public double getTamanio() {
+    return tamanio;
+  }
+  
   public void setTamanio(double tamanio) {
     if (tamanio >= 14.9) {
       this.tamanio = tamanio;
@@ -36,7 +40,12 @@ public class Monitor extends DispositivosDeEntrada {
   }
   
   @Override
+  public double getPrecio() {
+    return precio;
+  }
+  
+  @Override
   public String toString() {
-    return "Monitor: " + super.toString() + " Tamaño: " + tamanio + " pulgadas.\n";
+    return "id: " + getIdMonitor() + " " + super.toString() + ", Tamaño: " + tamanio + " pulgadas , Precio: " + getPrecio();
   }
 }

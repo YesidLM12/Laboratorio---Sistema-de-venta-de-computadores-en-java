@@ -4,54 +4,71 @@ import techmarket.model.computadora.Computadora;
 import techmarket.model.dispositivos.Monitor;
 import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
+import techmarket.model.inventario.Inventario.*;
 import techmarket.utils.InputReader;
+import techmarket.utils.Validador;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import static techmarket.model.inventario.Inventario.*;
+
 public class ComputadoraService {
-  
-  static  List<Computadora> computadoras = new ArrayList<>();
-  
-  public List<Computadora> getComputadoras() {
-    return computadoras;
-  }
-  
-  public static void setComputadoras(List<Computadora> computadoras) {
-    ComputadoraService.computadoras = computadoras;
-  }
   
   // ==========================================
   // Crear computadoras
   // ==========================================
   
+  // Computadora generica
   public void crearComputadora(){
+    Monitor m = null;
+    Teclado t = null;
+    Mouse mouse = null;
     
-    // leer datos teclado
-    String marcaTeclado = InputReader.readString("Ingrese la marca del teclado: ");
-    String tipoTeclado = InputReader.readString("Ingrese el tipo de teclado (mecanico/membrana): ");
-    double precioTeclado = InputReader.readDouble("Ingrese el precio del teclado: ");
+    // Buscar monitor Genius
+    for (Monitor monitor : monitores){
+      
+      if (monitor.getMarca().equalsIgnoreCase("Genius") && monitor.getTamanio() == 24){
+        m = monitor;
+        break;
+      }
+    }
     
-    Teclado t = new Teclado(marcaTeclado,tipoTeclado,precioTeclado);
+    if (m == null){
+      System.out.println("No hay monitor marca Genius de 24 pulgadas disponible.");
+      return;
+    }
     
     
-    // leer datos mouse
-    String marcaMouse = InputReader.readString("Ingrese la marca del mouse: ");
-    int cantidadBotones = InputReader.readInt("Ingrese la cantidad de botones del mouse: ");
-    double precioMouse = InputReader.readDouble("Ingrese el precio del mouse: ");
+    // Buscar Teclado Genius
+    for( Teclado teclado : teclados){
+      
+      if (teclado.getMarca().equalsIgnoreCase("Genius") && teclado.getTipoTeclado().equalsIgnoreCase("membrana")){
+        t = teclado;
+        break;
+      }
+    }
     
-    Mouse mouse = new Mouse(marcaMouse,cantidadBotones,precioMouse);
+    if (t == null) {
+      System.out.println("No hay teclado marca Genius de membrana.");
+      return;
+    }
     
     
-    // leer datos monitor
-    String marcaMonitor = InputReader.readString("Ingrese la marca del monitor: ");
-    double tamanio = InputReader.readDouble("Ingrese el tamaño del monitor (en pulgadas): ");
-    double precioMonitor = InputReader.readDouble("Ingrese el precio del monitor: ");
+    // Buscar mouse genius
+    for (Mouse mou : mouses){
+       if( mou.getMarca().equalsIgnoreCase("Genius") && mou.getCantidadBotones() == 2){
+         mouse = mou;
+         break;
+       }
+    }
     
-    Monitor m = new Monitor(marcaMonitor,tamanio,precioMonitor);
+    if (mouse == null){
+      System.out.println("No hay Maus marca Genius de 2 botones.");
+      return;
+    }
     
     // validar stock real
-    if (!Inventarioservice.hayStockComputadores(marcaMonitor, marcaTeclado, marcaMouse, 1)) {
+    if (Inventarioservice.hayStockComputadores(m.getMarca(),t.getMarca(),mouse.getMarca(), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora.");
       return;
     }
@@ -64,41 +81,75 @@ public class ComputadoraService {
       return;
     }
     
+    // Asignar precio
+    double precio = InputReader.readDouble("Ingrese el precio de la computadora: ");
+    
+    // Validar que el precio sea aceptable
+    boolean valido = Validador.esPrecioValido(precio);
+    
+    if (!valido){
+      System.out.println("El precio es inválido.");
+      return;
+    }
+    
     // crear computadora
-    String nombre = InputReader.readString("Ingrese el nombre de la computadora: ");
-    Computadora computadora = new Computadora(nombre, m, t, mouse);
+    Computadora computadora = new Computadora(m, t, mouse, precio);
     System.out.println("Computadora creada exitosamente: " + computadora);
   }
   
   
-  
+  // Computadora Ofimatica
   public void crearComputadoraOfimatica(){
     
-    // leer datos teclado
-    String marcaTeclado = InputReader.readString("Ingrese la marca del teclado: ");
-    String tipoTeclado = InputReader.readString("Ingrese el tipo de teclado (mecanico/membrana): ");
-    double precioTeclado = InputReader.readDouble("Ingrese el precio del teclado: ");
+    Monitor m = null;
+    Teclado t = null;
+    Mouse mouse = null;
     
-    Teclado t = new Teclado(marcaTeclado,tipoTeclado,precioTeclado);
+    // Buscar monitor Samsung
+    for (Monitor monitor : monitores){
+      
+      if (monitor.getMarca().equalsIgnoreCase("Samsung") && monitor.getTamanio() == 27){
+        m = monitor;
+        break;
+      }
+    }
+    
+    if (m == null){
+      System.out.println("No hay monitor marca Samsung de 27 pulgadas disponible.");
+      return;
+    }
     
     
-    // leer datos mouse
-    String marcaMouse = InputReader.readString("Ingrese la marca del mouse: ");
-    int cantidadBotones = InputReader.readInt("Ingrese la cantidad de botones del mouse: ");
-    double precioMouse = InputReader.readDouble("Ingrese el precio del mouse: ");
+    // Buscar Teclado Samsung
+    for( Teclado teclado : teclados){
+      
+      if (teclado.getMarca().equalsIgnoreCase("Samsung") && teclado.getTipoTeclado().equalsIgnoreCase("membrana")){
+        t = teclado;
+        break;
+      }
+    }
     
-    Mouse mouse = new Mouse(marcaMouse,cantidadBotones,precioMouse);
+    if (t == null) {
+      System.out.println("No hay teclado marca Samsung de membrana.");
+      return;
+    }
     
     
-    // leer datos monitor
-    String marcaMonitor = InputReader.readString("Ingrese la marca del monitor: ");
-    double tamanio = InputReader.readDouble("Ingrese el tamaño del monitor (en pulgadas): ");
-    double precioMonitor = InputReader.readDouble("Ingrese el precio del monitor: ");
+    // Buscar mouse Samsung
+    for (Mouse mou : mouses){
+      if( mou.getMarca().equalsIgnoreCase("Samsung") && mou.getCantidadBotones() == 2){
+        mouse = mou;
+        break;
+      }
+    }
     
-    Monitor m = new Monitor(marcaMonitor,tamanio,precioMonitor);
+    if (mouse == null){
+      System.out.println("No hay Maus marca Samsung de 2 botones.");
+      return;
+    }
     
     // validar stock real
-    if (!Inventarioservice.hayStockComputadores(marcaMonitor, marcaTeclado, marcaMouse, 1)) {
+    if (Inventarioservice.hayStockComputadores(m.getMarca(),t.getMarca(),mouse.getMarca(), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora.");
       return;
     }
@@ -111,41 +162,75 @@ public class ComputadoraService {
       return;
     }
     
+    // Asignar precio
+    double precio = InputReader.readDouble("Ingrese el precio de la computadora: ");
+    
+    // Validar que el precio sea aceptable
+    boolean valido = Validador.esPrecioValido(precio);
+    
+    if (!valido){
+      System.out.println("El precio es inválido.");
+      return;
+    }
+    
     // crear computadora
-    String nombre = InputReader.readString("Ingrese el nombre de la computadora: ");
-    Computadora computadora = new Computadora(nombre, m, t, mouse);
-    System.out.println("Computadora ofimática creada exitosamente: " + computadora);
+    Computadora computadora = new Computadora(m, t, mouse, precio);
+    System.out.println("Computadora creada exitosamente: " + computadora);
   }
   
   
-  
+  // Computadora Gamer
   public void crearComputadoraGamer(){
     
-    // leer datos teclado
-    String marcaTeclado = InputReader.readString("Ingrese la marca del teclado: ");
-    String tipoTeclado = InputReader.readString("Ingrese el tipo de teclado (mecanico/membrana): ");
-    double precioTeclado = InputReader.readDouble("Ingrese el precio del teclado: ");
+    Monitor m = null;
+    Teclado t = null;
+    Mouse mouse = null;
     
-    Teclado t = new Teclado(marcaTeclado,tipoTeclado,precioTeclado);
+    // Buscar monitor Razer
+    for (Monitor monitor : monitores){
+      
+      if (monitor.getMarca().equalsIgnoreCase( "Razer") && monitor.getTamanio() == 27){
+        m = monitor;
+        break;
+      }
+    }
+    
+    if (m == null){
+      System.out.println("No hay monitor marca Razer de 27 pulgadas disponible.");
+      return;
+    }
     
     
-    // leer datos mouse
-    String marcaMouse = InputReader.readString("Ingrese la marca del mouse: ");
-    int cantidadBotones = InputReader.readInt("Ingrese la cantidad de botones del mouse: ");
-    double precioMouse = InputReader.readDouble("Ingrese el precio del mouse: ");
+    // Buscar Teclado Razer
+    for( Teclado teclado : teclados){
+      
+      if (teclado.getMarca().equalsIgnoreCase( "Razer") && teclado.getTipoTeclado().equalsIgnoreCase("membrana")){
+        t = teclado;
+        break;
+      }
+    }
     
-    Mouse mouse = new Mouse(marcaMouse,cantidadBotones,precioMouse);
+    if (t == null) {
+      System.out.println("No hay teclado marca Razer de membrana.");
+      return;
+    }
     
     
-    // leer datos monitor
-    String marcaMonitor = InputReader.readString("Ingrese la marca del monitor: ");
-    double tamanio = InputReader.readDouble("Ingrese el tamaño del monitor (en pulgadas): ");
-    double precioMonitor = InputReader.readDouble("Ingrese el precio del monitor: ");
+    // Buscar mouse Razer
+    for (Mouse mou : mouses){
+      if( mou.getMarca().equalsIgnoreCase( "Razer") && mou.getCantidadBotones() == 2){
+        mouse = mou;
+        break;
+      }
+    }
     
-    Monitor m = new Monitor(marcaMonitor,tamanio,precioMonitor);
+    if (mouse == null){
+      System.out.println("No hay Maus marca Razer de 2 botones.");
+      return;
+    }
     
     // validar stock real
-    if (!Inventarioservice.hayStockComputadores(marcaMonitor, marcaTeclado, marcaMouse, 1)) {
+    if (Inventarioservice.hayStockComputadores(m.getMarca(),t.getMarca(),mouse.getMarca(), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora.");
       return;
     }
@@ -158,41 +243,76 @@ public class ComputadoraService {
       return;
     }
     
+    // Asignar precio
+    double precio = InputReader.readDouble("Ingrese el precio de la computadora: ");
+    
+    // Validar que el precio sea aceptable
+    boolean valido = Validador.esPrecioValido(precio);
+    
+    if (!valido){
+      System.out.println("El precio es inválido.");
+      return;
+    }
+    
     // crear computadora
-    String nombre = InputReader.readString("Ingrese el nombre de la computadora: ");
-    Computadora computadora = new Computadora(nombre, m, t, mouse);
-    System.out.println("Computadora gamer creada exitosamente: " + computadora);
+    Computadora computadora = new Computadora(m, t, mouse, precio);
+    System.out.println("Computadora creada exitosamente: " + computadora);
   }
   
   
+  // Computadora estudiantil
   public void crearComputadoraEstudiante(){
     
-    // leer datos teclado
-    String marcaTeclado = InputReader.readString("Ingrese la marca del teclado: ");
-    String tipoTeclado = InputReader.readString("Ingrese el tipo de teclado (mecanico/membrana): ");
-    double precioTeclado = InputReader.readDouble("Ingrese el precio del teclado: ");
+    Monitor m = null;
+    Teclado t = null;
+    Mouse mouse = null;
     
-    Teclado t = new Teclado(marcaTeclado,tipoTeclado,precioTeclado);
+    // Buscar monitor LG
+    for (Monitor monitor : monitores){
+      
+      if (monitor.getMarca().equalsIgnoreCase("LG") && monitor.getTamanio() == 27){
+        m = monitor;
+        break;
+      }
+    }
+    
+    if (m == null){
+      System.out.println("No hay monitor marca LG de 27 pulgadas disponible.");
+      return;
+    }
     
     
-    // leer datos mouse
-    String marcaMouse = InputReader.readString("Ingrese la marca del mouse: ");
-    int cantidadBotones = InputReader.readInt("Ingrese la cantidad de botones del mouse: ");
-    double precioMouse = InputReader.readDouble("Ingrese el precio del mouse: ");
+    // Buscar Teclado LG
+    for( Teclado teclado : teclados){
+      
+      if (teclado.getMarca().equalsIgnoreCase("LG") && teclado.getTipoTeclado().equalsIgnoreCase("membrana")){
+        t = teclado;
+        break;
+      }
+    }
     
-    Mouse mouse = new Mouse(marcaMouse,cantidadBotones,precioMouse);
+    if (t == null) {
+      System.out.println("No hay teclado marca LG de membrana.");
+      return;
+    }
     
     
-    // leer datos monitor
-    String marcaMonitor = InputReader.readString("Ingrese la marca del monitor: ");
-    double tamanio = InputReader.readDouble("Ingrese el tamaño del monitor (en pulgadas): ");
-    double precioMonitor = InputReader.readDouble("Ingrese el precio del monitor: ");
+    // Buscar mouse LG
+    for (Mouse mou : mouses){
+      if( mou.getMarca().equalsIgnoreCase("LG") && mou.getCantidadBotones() == 2){
+        mouse = mou;
+        break;
+      }
+    }
     
-    Monitor m = new Monitor(marcaMonitor,tamanio,precioMonitor);
+    if (mouse == null){
+      System.out.println("No hay Maus marca LG de 2 botones.");
+      return;
+    }
     
     // validar stock real
-    if (!Inventarioservice.hayStockComputadores(marcaMonitor, marcaTeclado, marcaMouse, 1)) {
-      System.out.println("No hay stock suficiente para crear la computadora para estudiante.");
+    if (Inventarioservice.hayStockComputadores(m.getMarca(),t.getMarca(),mouse.getMarca(), 1)) {
+      System.out.println("No hay stock suficiente para crear la computadora.");
       return;
     }
     
@@ -204,10 +324,20 @@ public class ComputadoraService {
       return;
     }
     
+    // Asignar precio
+    double precio = InputReader.readDouble("Ingrese el precio de la computadora: ");
+    
+    // Validar que el precio sea aceptable
+    boolean valido = Validador.esPrecioValido(precio);
+    
+    if (!valido){
+      System.out.println("El precio es inválido.");
+      return;
+    }
+    
     // crear computadora
-    String nombre = InputReader.readString("Ingrese el nombre de la computadora: ");
-    Computadora computadora = new Computadora(nombre, m, t, mouse);
-    System.out.println("Computadora para estudiante creada exitosamente: " + computadora);
+    Computadora computadora = new Computadora(m, t, mouse, precio);
+    System.out.println("Computadora creada exitosamente: " + computadora);
   }
   
   // ==========================================

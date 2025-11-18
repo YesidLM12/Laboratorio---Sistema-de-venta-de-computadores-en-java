@@ -19,15 +19,24 @@ public class Teclado extends DispositivosDeEntrada{
   }
   
   public Teclado(String tipo, String marca) {
-    super(tipo, marca);
+    super(marca);
   }
   
   public String getTipoTeclado() {
     return tipoTeclado;
   }
-
+  
+  @Override
+  public double getPrecio() {
+    return precio;
+  }
+  
+  public void setPrecio(double precio) {
+    this.precio = precio;
+  }
+  
   @Override
   public String toString() {
-    return "Teclado: " + super.toString() + " Tipo de teclado: " + tipoTeclado + ".\n";
+    return "id: " + getId() + " ," + super.toString() + ", Tipo de teclado: " + tipoTeclado + ", Precio: " + getPrecio();
   }
 }

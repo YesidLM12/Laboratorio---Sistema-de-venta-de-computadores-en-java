@@ -67,12 +67,7 @@ src/
 │     ├── OrdenService.java     
 │     ├── ClienteService.java       
 │     └── InventarioService.java        
-│       
-├── repository/     
-│     ├── ArchivoManager.java       
-│     ├── PersistenciaComputadoras.java     
-│     ├── PersistenciaOrdenes.java      
-│     └── PersistenciaClientes.java     
+│
 │       
 ├── utils/      
 │     ├── InputReader.java      

@@ -3,22 +3,17 @@ package techmarket.model.dispositivos;
 import techmarket.utils.IdGenerator;
 
 public class DispositivosDeEntrada {
-  private final int idDispositivoEntrada;
+  // Atributos
   private String tipo;
   private String marca;
   private double precio;
   
-  public DispositivosDeEntrada(String tipo, String marca) {
-    idDispositivoEntrada = IdGenerator.nextId();
-    this.tipo = tipo;
-    this.marca = marca;
-  }
-  
+  // Constructor
   public DispositivosDeEntrada(String marca) {
-    idDispositivoEntrada = IdGenerator.nextId();
     this.marca = marca;
   }
   
+  // getter y setter
   public String getTipo() {
     return tipo;
   }
@@ -35,14 +30,15 @@ public class DispositivosDeEntrada {
     this.marca = marca;
   }
   
-  @Override
-  public String toString() {
-    return "id: " + idDispositivoEntrada + " tipo: " + tipo + ", marca: " + marca;
-  }
-  
   public double getPrecio() {
     return precio;
   }
+  
+  @Override
+  public String toString() {
+    return "marca: " + marca;
+  }
+  
 }
 
 

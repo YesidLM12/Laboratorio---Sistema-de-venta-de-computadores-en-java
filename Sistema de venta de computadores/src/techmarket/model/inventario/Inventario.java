@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Inventario {
+  
   public static List<Teclado> teclados = new ArrayList<>();
   public static List<Mouse> mouses = new ArrayList<>();
   public static List<Monitor> monitores = new ArrayList<>();
@@ -18,11 +19,19 @@ public class Inventario {
     return teclados;
   }
   
+  public static void setTeclados(List<Teclado> teclados) {
+    Inventario.teclados = teclados;
+  }
+  
   public List<Mouse> getMouses() {
     return mouses;
   }
   
   public List<Monitor> getMonitores() {
     return monitores;
+  }
+  
+  public static List<Computadora> getComputadoras() {
+    return computadoras;
   }
 }

@@ -3,6 +3,7 @@ package techmarket.services;
 
 import techmarket.model.cliente.Cliente;
 import techmarket.model.computadora.Computadora;
+import techmarket.model.inventario.Inventario;
 import techmarket.model.orden.EstadoOrden;
 import techmarket.model.orden.Orden;
 import techmarket.utils.InputReader;
@@ -27,14 +28,14 @@ public class OrdenService {
   // Obtener orden por id
   // ========================
   
-  private static Orden getOrdenPorId(int idOrden) {
-    Orden orden = OrdenService.getOrdenPorId(idOrden);
+  public static Orden getOrdenPorId(int idOrden){
     
-    if (orden == null) {
-      System.out.println(" No se encontró ninguna orden con ID: " + idOrden);
-      return  null;
+    for (Orden orden : ordenes){
+      if (orden.getIdOrden() == idOrden){
+        return orden;
+      }
     }
-    return  orden;
+   return  null;
   }
   
   // ========================
@@ -64,17 +65,24 @@ public class OrdenService {
     int cantidadComputadoras = InputReader.readInt("¿Cuántas computadoras desea agregar a la orden? ");
     
     do {
+      
       int idComputadora = InputReader.readInt("Ingrese el ID de la computadora a agregar a la orden: ");
       Computadora computadora = ComputadoraService.getComputadoraPorId(idComputadora);
       
       agregarComputadoraAOrden(orden, computadora);
       cantidadComputadoras--;
+      
     } while (cantidadComputadoras > 0);
     
     orden.setEstado(EstadoOrden.valueOf("CREADA"));
     orden.setFechaOrden(LocalDateTime.now());
+    Cliente.agregarOrden(orden);
     
-    orden.mostrarOrden();
+    registrarOrden(orden);
+    
+    calcularTotalOrden(orden);
+    
+    mostrarDetallesOrden(orden.getIdOrden());
   }
   
   // Cliente existente
@@ -159,7 +167,7 @@ public class OrdenService {
     double total = 0.0;
     
     // Sumar el precio de cada computadora en la orden
-    for (Computadora computadora : orden.getComputadoras()) {
+    for (Computadora computadora : Inventario.getComputadoras()) {
       total += computadora.getPrecio();
     }
     
@@ -173,6 +181,10 @@ public class OrdenService {
   public static String mostrarDetallesOrden(int idOrden) {
     Orden orden = getOrdenPorId(idOrden);
     
+    if (orden == null) {
+      return "La orden con ID " + idOrden + " no existe.";
+    }
+    
     StringBuilder detalles = new StringBuilder();
     
     detalles.append("===== Detalles de la Orden =====\n");
@@ -183,7 +195,7 @@ public class OrdenService {
     
     detalles.append("Computadoras en la Orden:\n");
     
-    for (Computadora computadora : orden.getComputadoras()) {
+    for (Computadora computadora : Inventario.getComputadoras()) {
       detalles.append("- ")
               .append(computadora.getDescripcion())
               .append(" | Precio: $")

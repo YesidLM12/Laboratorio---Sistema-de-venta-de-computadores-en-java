@@ -9,8 +9,8 @@ import java.util.List;
 
 
 public class Computadora{
+  
   private final int idComputadora;
-  private final String nombreComputadora;
   private double precio;
   private final Monitor monitor;
   private final Teclado teclado;
@@ -18,21 +18,18 @@ public class Computadora{
   private String descripcion;
   private static final List<Computadora> computadoras = new java.util.ArrayList<>();
   
-  public Computadora(String nombreComputadora, Monitor monitor, Teclado teclado, Mouse mouse) {
+  public Computadora(Monitor monitor, Teclado teclado, Mouse mouse, double precio) {
     this.idComputadora = IdGenerator.generarIdComputadora();
-    this.nombreComputadora = nombreComputadora;
     this.monitor = monitor;
     this.teclado = teclado;
     this.mouse = mouse;
+    this.precio = precio;
   }
   
   public int getIdComputadora() {
     return idComputadora;
   }
   
-  public String getNombreComputadora() {
-    return nombreComputadora;
-  }
   
   public Monitor getMonitor() {
     return monitor;
@@ -58,20 +55,8 @@ public class Computadora{
     this.descripcion = descripcion;
   }
   
-  
-  
-  public static List<Computadora> getComputadoras() {
-    return computadoras;
-  }
-  
-  
-  
-  public void agregarComputadora(Computadora computadora) {
-    computadoras.add(computadora);
-  }
-  
   @Override
   public String toString() {
-    return "Computadora{" + "idComputadora=" + idComputadora + ", nombreComputadora='" + nombreComputadora + '\'' + ", monitor=" + monitor + ", teclado=" + teclado + ", mouse=" + mouse + '}';
+    return "Computadora:\n" + "idComputadora: " + idComputadora  + "\nmonitor: " + monitor + "\nteclado: " + teclado + "\nmouse: " + mouse + '\n';
   }
 }

@@ -14,10 +14,6 @@ public class ClienteService {
     return clientes;
   }
   
-  public static void setClientes(List<Cliente> clientes) {
-    ClienteService.clientes = clientes;
-  }
-  
   // ==========================
   // Crear clientes
   // ==========================

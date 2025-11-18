@@ -18,9 +18,25 @@ public class Mouse extends DispositivosDeEntrada {
     return id;
   }
   
+  public int getCantidadBotones() {
+    return cantidadBotones;
+  }
+  
+  public void setCantidadBotones(int cantidadBotones) {
+    this.cantidadBotones = cantidadBotones;
+  }
+  
+  @Override
+  public double getPrecio() {
+    return precio;
+  }
+  
+  public void setPrecio(double precio) {
+    this.precio = precio;
+  }
   
   @Override
   public String toString() {
-    return "Mouse: " + super.toString() + " Cantidad de botones=" + cantidadBotones + ".\n";
+    return "id: " + getIdMouse() + " " + super.toString() + ", Cantidad de botones:" + cantidadBotones + ", Precio: " + getPrecio();
   }
 }

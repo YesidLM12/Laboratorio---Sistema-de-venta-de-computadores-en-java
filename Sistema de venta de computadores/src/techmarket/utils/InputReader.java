@@ -3,13 +3,19 @@ package techmarket.utils;
 import java.util.Scanner;
 
 public class InputReader {
+  /* Clase para optimizar el uso de Scanner.*/
+  
+  // creación de instancia
   public static final Scanner sc = new Scanner(System.in);
   
+  // metodo para leer strings
   public static String readString(String prompt) {
     System.out.print(prompt);
     return sc.nextLine();
   }
   
+  
+  // metodo para leer int
   public static int readInt(String prompt) {
     System.out.print(prompt);
     while (!sc.hasNextInt()) {
@@ -21,6 +27,8 @@ public class InputReader {
     return value;
   }
   
+  
+  // metodo para leer double
   public  static double readDouble(String prompt) {
     System.out.print(prompt);
     while (!sc.hasNextDouble()) {

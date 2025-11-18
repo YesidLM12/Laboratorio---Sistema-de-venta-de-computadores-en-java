@@ -2,19 +2,18 @@ package techmarket.model.orden;
 
 import techmarket.model.cliente.Cliente;
 import techmarket.model.computadora.Computadora;
+import techmarket.model.inventario.Inventario;
 import techmarket.utils.IdGenerator;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+
+import static techmarket.model.inventario.Inventario.computadoras;
 
 public class Orden {
   private final int idOrden = IdGenerator.generarIdOrden();
   private Cliente cliente;
   private LocalDateTime fechaOrden;
   private EstadoOrden estado;
-  private Computadora computadora;
-  private  List<Computadora> computadoras = new java.util.ArrayList<>();
   
 
   public Orden(Cliente cliente) {
@@ -29,9 +28,6 @@ public class Orden {
     return fechaOrden;
   }
   
-  public List<Computadora> getComputadoras() {
-    return computadoras;
-  }
   
   public void setFechaOrden(LocalDateTime now) {
     this.fechaOrden = now;
