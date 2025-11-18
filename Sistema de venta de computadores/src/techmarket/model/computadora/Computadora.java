@@ -5,6 +5,8 @@ import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
 import techmarket.utils.IdGenerator;
 
+import java.util.List;
+
 
 public class Computadora{
   private final int idComputadora;
@@ -14,6 +16,7 @@ public class Computadora{
   private final Teclado teclado;
   private final Mouse mouse;
   private String descripcion;
+  private static final List<Computadora> computadoras = new java.util.ArrayList<>();
   
   public Computadora(String nombreComputadora, Monitor monitor, Teclado teclado, Mouse mouse) {
     this.idComputadora = IdGenerator.generarIdComputadora();
@@ -53,6 +56,18 @@ public class Computadora{
   
   public void setDescripcion(String descripcion) {
     this.descripcion = descripcion;
+  }
+  
+  
+  
+  public static List<Computadora> getComputadoras() {
+    return computadoras;
+  }
+  
+  
+  
+  public void agregarComputadora(Computadora computadora) {
+    computadoras.add(computadora);
   }
   
   @Override

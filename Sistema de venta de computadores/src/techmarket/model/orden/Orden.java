@@ -5,14 +5,16 @@ import techmarket.model.computadora.Computadora;
 import techmarket.utils.IdGenerator;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Orden {
   private final int idOrden = IdGenerator.generarIdOrden();
   private Cliente cliente;
-  private List<Computadora> computadoras = new java.util.ArrayList<>();
   private LocalDateTime fechaOrden;
   private EstadoOrden estado;
+  private Computadora computadora;
+  private  List<Computadora> computadoras = new java.util.ArrayList<>();
   
 
   public Orden(Cliente cliente) {

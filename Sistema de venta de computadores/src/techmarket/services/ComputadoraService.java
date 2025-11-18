@@ -6,11 +6,20 @@ import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
 import techmarket.utils.InputReader;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComputadoraService {
   
+  static  List<Computadora> computadoras = new ArrayList<>();
   
+  public List<Computadora> getComputadoras() {
+    return computadoras;
+  }
+  
+  public static void setComputadoras(List<Computadora> computadoras) {
+    ComputadoraService.computadoras = computadoras;
+  }
   
   // ==========================================
   // Crear computadoras
@@ -229,5 +238,33 @@ public class ComputadoraService {
     
     return precioMonitor + precioTeclado + precioMouse;
     
+  }
+  
+  public static Computadora getComputadoraPorId(int idComputadora){
+    
+    // Buscar la computadora por ID
+    Computadora computadora = Inventarioservice.obtenerComputadoraPorId(idComputadora);
+    
+    if (computadora == null) {
+      System.out.println("Computadora con ID " + idComputadora + " no encontrada.");
+    } else {
+      System.out.println("Computadora encontrada: " + computadora);
+    }
+    return computadora;
+  }
+  
+  
+  public static void buscarComputadoraPorId(){
+    int idComputadora = InputReader.readInt("Ingrese el id de la computadora a buscar");
+    
+    
+    // Buscar la computadora por ID
+    Computadora computadora = Inventarioservice.obtenerComputadoraPorId(idComputadora);
+    
+    if (computadora == null) {
+      System.out.println("Computadora con ID " + idComputadora + " no encontrada.");
+    } else {
+      System.out.println("Computadora encontrada: " + computadora);
+    }
   }
 }

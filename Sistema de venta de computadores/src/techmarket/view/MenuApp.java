@@ -1,10 +1,19 @@
 package techmarket.view;
 
+import techmarket.DTO.InventarioDTO;
+import techmarket.model.computadora.Computadora;
+import techmarket.model.inventario.Inventario;
+import techmarket.repository.PersistenciaClientes;
+import techmarket.repository.PersistenciaComputadoras;
+import techmarket.repository.PersistenciaInventario;
+import techmarket.repository.PersistenciaOrdenes;
 import techmarket.services.ClienteService;
 import techmarket.services.ComputadoraService;
 import techmarket.services.Inventarioservice;
 import techmarket.services.OrdenService;
 import techmarket.utils.InputReader;
+
+import javax.naming.InvalidNameException;
 
 public class MenuApp {
   
@@ -60,9 +69,10 @@ public class MenuApp {
       System.out.println("2. Agregar Teclado");
       System.out.println("3. Agregar Mouse");
       System.out.println("4. Agregar Monitor");
-      System.out.println("5. Eliminar Teclado");
-      System.out.println("6. Eliminar Mouse");
-      System.out.println("7. Eliminar Monitor");
+      System.out.println("5. Agregar Computadora");
+      System.out.println("6. Eliminar Teclado");
+      System.out.println("7. Eliminar Mouse");
+      System.out.println("8. Eliminar Monitor");
       System.out.println("0. Volver");
       
       opcion = InputReader.readInt("Seleccione una opción: ");
@@ -72,14 +82,16 @@ public class MenuApp {
          case 2 -> inventarioservice.agregarStockTeclado();
          case 3 -> inventarioservice.agregarStockMouse();
          case 4 -> inventarioservice.agregarStockMonitor();
-         case 5 -> Inventarioservice.eliminarTeclado();
-         case 6 -> Inventarioservice.eliminarMouse();
-         case 7 -> Inventarioservice.eliminarMonitor();
+         //case 5 -> inventarioservice.agregarStockComputadora();
+         case 6 -> Inventarioservice.eliminarTeclado();
+         case 7 -> Inventarioservice.eliminarMouse();
+         case 8 -> Inventarioservice.eliminarMonitor();
          case 0 -> System.out.println("Volviendo al menú principal.");
          default -> System.out.println("Opción inválida.");
       }
     } while (opcion != 0);
   }
+  
   
   private void opcionGestionClientes(){
     int opcion;
@@ -106,6 +118,7 @@ public class MenuApp {
   
   }
   
+  
   private void opcionCrearComputadora(){
     int opcion;
     
@@ -131,23 +144,78 @@ public class MenuApp {
   
   }
   
+  
   private void opcionCrearOrden(){
+    int opcion;
+    
+    do {
+      System.out.println("\n--- Crear Orden ---");
+      System.out.println("1. Crear Orden para Cliente Existente");
+      System.out.println("2. Crear Orden para Nuevo Cliente");
+      System.out.println("0. Volver");
+      
+      opcion = InputReader.readInt("Seleccione una opción: ");
+      
+      switch (opcion) {
+         case 1 -> ordenService.crearOrdenClienteExistente();
+         case 2 -> ordenService.crearOrdenClienteNuevo();
+         case 0 -> System.out.println("Volviendo al menú principal.");
+         default -> System.out.println("Opción inválida.");
+      }
+    } while (opcion != 0);
   
   }
+  
   
   private void opcionMostrarOrdenes(){
-  
+    int idOrden = InputReader.readInt("Ingresa el id de la orden: ");
+    String detalles = OrdenService.mostrarDetallesOrden(idOrden);
+    System.out.println(detalles);
   }
+  
   
   private void opcionBuscar(){
-  
+    int opcion;
+    
+    do {
+      System.out.println("\n ----------- Buscar -----------");
+      System.out.println("1. Buscar cliente");
+      System.out.println("2. Buscar orden");
+      System.out.println("3. Buscar computadora");
+      System.out.println("4. Buscar teclado");
+      System.out.println("5. Buscar mouse");
+      System.out.println("6. Buscar monitor");
+      System.out.println("0. Salir");
+      
+      opcion = InputReader.readInt("Selecciona una opción: ");
+      
+      switch (opcion) {
+        case 1 -> ClienteService.buscarClientePorId();
+        case 2 -> OrdenService.buscarOrdenPorId();
+        case 3 -> ComputadoraService.buscarComputadoraPorId();
+        case 4 -> Inventarioservice.buscarTecladoPorId();
+        case 5 -> Inventarioservice.buscarMousePorId();
+        case 6 -> Inventarioservice.buscarMonitorPorId();
+        case 0 -> System.out.println("Volviendo al menú principal.");
+        default -> System.out.println("Opción no válida.");
+      }
+      
+    }while(opcion != 0);
+    
   }
   
-  private void cargarDatos(){
   
+  private void cargarDatos(){
+    System.out.println("Cargando datos...");
+    PersistenciaClientes.cargarLista();
+    PersistenciaComputadoras.cargarLista();
+    PersistenciaOrdenes.cargarLista();
   }
   
   private void guardarDatos() {
-  
+    PersistenciaClientes.guardarLista(ClienteService.getClientes());
+    PersistenciaComputadoras.guardarLista(Computadora.getComputadoras());
+    PersistenciaOrdenes.guardarLista(OrdenService.getOrdenes());
+    PersistenciaInventario.guardarInvnetarioCompleto();
   }
 }

@@ -79,7 +79,7 @@ src/
 │     ├── IdGenerator.java      
 │     └── Validador.java        
 │
-└── view/
+└── view/       
 └── MenuApp.java
 
 

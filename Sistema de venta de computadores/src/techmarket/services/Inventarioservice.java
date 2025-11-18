@@ -45,6 +45,11 @@ public class Inventarioservice {
     System.out.println("Mouse agregado al inventario.");
   }
   
+  public void agregarStockComputadora(Computadora computadora){
+    computadoras.add(computadora);
+    System.out.println("Computadora agregada al inventario.");
+  }
+  
   // ===========================================
   // Disponibilidad de stock
   // ===========================================
@@ -200,6 +205,63 @@ public class Inventarioservice {
       System.out.println("No se encontró un monitor con el ID proporcionado.");
     }
   }
+  
+  // =========================================================
+  // Buscar por ID
+  // =========================================================
+  
+  // Buscar computadora
+  public static  Computadora obtenerComputadoraPorId(int idComputadora){
+    for (Computadora computadora : computadoras ) {
+      if (computadora.getIdComputadora() == idComputadora) {
+        return computadora;
+      }
+    }
+    return null;
+  }
+  
+  
+  // Buscar teclado
+  public static void buscarTecladoPorId(){
+    int idTeclado = InputReader.readInt("Ingrese el id del teclado a buscar: ");
+    
+    for (Teclado t : teclados){
+      if(t.getId() == idTeclado){
+        System.out.println("Teclado encontrado: " + t);
+      } else {
+        System.out.println("Teclado no encontrado.");
+      }
+    }
+  }
+  
+  
+  // Buscar mouse
+  public static void buscarMousePorId(){
+    int idMouse = InputReader.readInt("Ingrese el id del teclado a buscar:");
+    
+    for (Mouse m : mouses){
+      if (m.getIdMouse() == idMouse){
+        System.out.println("Mouse encontrado: " + m);
+      } else {
+        System.out.println("Mouse no encontrado.");
+      }
+    }
+  }
+  
+  
+  // Buscar monitor
+  public static void buscarMonitorPorId(){
+    int idMonitor = InputReader.readInt("Ingrese el id del monitor a buscar: ");
+    
+    for (Monitor m : monitores) {
+      if ( m.getIdMonitor() == idMonitor) {
+        System.out.println("Monitor encontrado: " + m);
+      } else {
+        System.out.println("Monitor no encontrado");
+      }
+    }
+  }
+  
   
   // =========================================================
   // Método para mostrar el inventario completo

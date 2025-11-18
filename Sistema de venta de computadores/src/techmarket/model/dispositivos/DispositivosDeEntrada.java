@@ -3,7 +3,7 @@ package techmarket.model.dispositivos;
 import techmarket.utils.IdGenerator;
 
 public class DispositivosDeEntrada {
-  private int idDispositivoEntrada;
+  private final int idDispositivoEntrada;
   private String tipo;
   private String marca;
   private double precio;

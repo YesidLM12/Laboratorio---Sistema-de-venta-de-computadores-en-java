@@ -1,5 +1,6 @@
 package techmarket.model.inventario;
 
+import techmarket.model.computadora.Computadora;
 import techmarket.model.dispositivos.Monitor;
 import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
@@ -11,6 +12,7 @@ public class Inventario {
   public static List<Teclado> teclados = new ArrayList<>();
   public static List<Mouse> mouses = new ArrayList<>();
   public static List<Monitor> monitores = new ArrayList<>();
+  public static List<Computadora> computadoras = new ArrayList<>();
   
   public List<Teclado> getTeclados() {
     return teclados;

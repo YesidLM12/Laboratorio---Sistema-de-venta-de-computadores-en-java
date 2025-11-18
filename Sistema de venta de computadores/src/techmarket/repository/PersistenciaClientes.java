@@ -3,30 +3,35 @@ package techmarket.repository;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import techmarket.model.cliente.Cliente;
-import techmarket.model.orden.Orden;
+import techmarket.services.ClienteService;
 
 import java.io.FileReader;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PersistenciaClientes {
+  
   private static final String RUTA = "data/Clientes.json";
   
-  public void guardarLista(List<Cliente> lista) {
+  public static void guardarLista(List<Cliente> lista) {
     ArchivoManager.guardar(RUTA, lista);
   }
   
-  public List<Cliente> cargarLista() {
+  public static void cargarLista() {
     if (!ArchivoManager.existe(RUTA)) {
-      return new ArrayList<>();
+      return;
     }
     
     try (FileReader reader = new FileReader(RUTA)) {
       
       Type tipoLista = new TypeToken<List<Cliente>>() {
       }.getType();
-      return new Gson().fromJson(reader, tipoLista);
+      
+      List<Cliente> listaCargada = new Gson().fromJson(reader, tipoLista);
+      
+      if (listaCargada != null) {
+        ClienteService.setClientes(listaCargada);
+      }
       
     } catch (Exception e) {
       e.printStackTrace();

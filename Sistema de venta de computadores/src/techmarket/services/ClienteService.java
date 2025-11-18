@@ -10,6 +10,14 @@ public class ClienteService {
   
   static List<Cliente> clientes = new ArrayList<>();
   
+  public static List<Cliente> getClientes() {
+    return clientes;
+  }
+  
+  public static void setClientes(List<Cliente> clientes) {
+    ClienteService.clientes = clientes;
+  }
+  
   // ==========================
   // Crear clientes
   // ==========================
@@ -70,5 +78,15 @@ public class ClienteService {
     for (Cliente cliente : clientes) {
       System.out.println(cliente);
     }
+  }
+  
+  public static Cliente getClientePorNombre(String nombreCliente) {
+    for (Cliente cliente : clientes) {
+      if ( cliente.getNombre().equalsIgnoreCase(nombreCliente) ) {
+        return cliente;
+      }
+    }
+    System.out.println("No se encontró un cliente con el nombre proporcionado.");
+    return null;
   }
 }

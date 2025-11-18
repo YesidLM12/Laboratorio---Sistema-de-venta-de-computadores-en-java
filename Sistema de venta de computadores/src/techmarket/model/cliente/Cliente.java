@@ -6,7 +6,7 @@ import techmarket.utils.IdGenerator;
 import java.util.List;
 
 public class Cliente {
-  private int idCliente;
+  private final int idCliente;
   private String nombre;
   public List<Orden> historialOrdenes;
   
