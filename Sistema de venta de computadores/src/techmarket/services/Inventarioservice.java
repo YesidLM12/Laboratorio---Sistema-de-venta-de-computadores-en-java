@@ -1,5 +1,6 @@
 package techmarket.services;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import techmarket.model.computadora.Computadora;
 import techmarket.model.dispositivos.Monitor;
 import techmarket.model.dispositivos.Mouse;
@@ -278,37 +279,50 @@ public class Inventarioservice {
   
   public static void mostrarInventario(){
     
-    System.out.println("----- Inventario de Teclados -----");
+    System.out.println("\n----- Inventario de Teclados -----");
+    
+    if (teclados.isEmpty()){
+      System.out.println("\nNo hay articulos en el inventario");
+    }
+    
     for (Teclado teclado : teclados) {
-      
-      if (teclados.isEmpty()){
-        System.out.println("No hay ariticulos en el inventario.\n");
-      }
-      
       System.out.println(teclado);
     }
     
     
-    System.out.println("----- Inventario de Mouses -----");
+    System.out.println("\n----- Inventario de Mouses -----");
+    
+    if (mouses.isEmpty()){
+      System.out.println("\nNo hay articulos en el inventario");
+    }
     for (Mouse mouse : mouses) {
-      
-      if (teclados.isEmpty()){
-        System.out.println("No hay ariticulos en el inventario.\n");
-      }
-      
       System.out.println(mouse);
     }
     
-    System.out.println("----- Inventario de Monitores -----");
+    
+    
+    System.out.println("\n----- Inventario de Monitores -----");
+    
+    if (monitores.isEmpty()){
+      ;
+    }
     
     for (Monitor monitor : monitores) {
-      
-      if (teclados.isEmpty()){
-        System.out.println("No hay ariticulos en el inventario.\n");
-      }
-      
       System.out.println(monitor);
     }
+    
+    
+    System.out.println("\n----- Inventario de Computadoras -----");
+    
+    if (computadoras.isEmpty()) {
+      System.out.println("\nNo hay articulos en el inventario");
+    }
+    
+    for (Computadora c : computadoras) {
+      System.out.println(c);
+    }
   }
+  
+  
 }
 

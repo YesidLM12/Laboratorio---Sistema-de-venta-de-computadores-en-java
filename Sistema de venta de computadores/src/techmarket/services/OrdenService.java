@@ -74,7 +74,7 @@ public class OrdenService {
       
     } while (cantidadComputadoras > 0);
     
-    orden.setEstado(EstadoOrden.valueOf("CREADA"));
+    orden.setEstado(EstadoOrden.CREADA);
     orden.setFechaOrden(LocalDateTime.now());
     Cliente.agregarOrden(orden);
     
@@ -134,11 +134,12 @@ public class OrdenService {
       throw new IllegalArgumentException("La orden no puede ser nula");
     }
     if (computadora == null) {
-      throw new IllegalArgumentException("La computadora no puede ser nula");
+      System.out.println("La computadora no puede ser nula");
+      return;
     }
     
     // Validar que aún se puedan agregar productos
-    if (!orden.getEstado().equals(EstadoOrden.CREADA)) {
+    if (orden.getEstado() == null) {
       throw new IllegalStateException("No se pueden agregar productos a una orden que no está en estado CREADA");
     }
     
@@ -187,7 +188,7 @@ public class OrdenService {
     
     StringBuilder detalles = new StringBuilder();
     
-    detalles.append("===== Detalles de la Orden =====\n");
+    detalles.append("\n===== Detalles de la Orden =====\n");
     detalles.append("ID Orden: ").append(orden.getIdOrden()).append("\n");
     detalles.append("Cliente: ").append(orden.getCliente().getNombre()).append("\n");
     detalles.append("Fecha: ").append(orden.getFechaOrden()).append("\n");

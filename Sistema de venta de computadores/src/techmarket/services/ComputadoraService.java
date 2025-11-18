@@ -94,6 +94,8 @@ public class ComputadoraService {
     
     // crear computadora
     Computadora computadora = new Computadora(m, t, mouse, precio);
+    
+    computadoras.add(computadora);
     System.out.println("Computadora creada exitosamente: " + computadora);
   }
   
@@ -175,6 +177,8 @@ public class ComputadoraService {
     
     // crear computadora
     Computadora computadora = new Computadora(m, t, mouse, precio);
+    computadoras.add(computadora);
+    
     System.out.println("Computadora creada exitosamente: " + computadora);
   }
   
@@ -256,6 +260,8 @@ public class ComputadoraService {
     
     // crear computadora
     Computadora computadora = new Computadora(m, t, mouse, precio);
+    computadoras.add(computadora);
+    
     System.out.println("Computadora creada exitosamente: " + computadora);
   }
   
@@ -337,6 +343,8 @@ public class ComputadoraService {
     
     // crear computadora
     Computadora computadora = new Computadora(m, t, mouse, precio);
+    computadoras.add(computadora);
+    
     System.out.println("Computadora creada exitosamente: " + computadora);
   }
   

@@ -13,7 +13,7 @@ public class Orden {
   private final int idOrden = IdGenerator.generarIdOrden();
   private Cliente cliente;
   private LocalDateTime fechaOrden;
-  private EstadoOrden estado;
+  private EstadoOrden estado = EstadoOrden.PENDIENTE;
   
 
   public Orden(Cliente cliente) {
