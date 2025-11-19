@@ -3,7 +3,6 @@ package techmarket.services;
 
 import techmarket.model.cliente.Cliente;
 import techmarket.model.computadora.Computadora;
-import techmarket.model.inventario.Inventario;
 import techmarket.model.orden.EstadoOrden;
 import techmarket.model.orden.Orden;
 import techmarket.utils.InputReader;
@@ -168,7 +167,7 @@ public class OrdenService {
     double total = 0.0;
     
     // Sumar el precio de cada computadora en la orden
-    for (Computadora computadora : Inventario.getComputadoras()) {
+    for (Computadora computadora : orden.ordenComputadoras) {
       total += computadora.getPrecio();
     }
     
@@ -182,31 +181,20 @@ public class OrdenService {
   public static String mostrarDetallesOrden(int idOrden) {
     Orden orden = getOrdenPorId(idOrden);
     
-    if (orden == null) {
-      return "La orden con ID " + idOrden + " no existe.";
+    if (orden == null){
+      return null;
     }
     
-    StringBuilder detalles = new StringBuilder();
-    
-    detalles.append("\n===== Detalles de la Orden =====\n");
-    detalles.append("ID Orden: ").append(orden.getIdOrden()).append("\n");
-    detalles.append("Cliente: ").append(orden.getCliente().getNombre()).append("\n");
-    detalles.append("Fecha: ").append(orden.getFechaOrden()).append("\n");
-    detalles.append("Estado: ").append(orden.getEstado()).append("\n\n");
-    
-    detalles.append("Computadoras en la Orden:\n");
-    
-    for (Computadora computadora : Inventario.getComputadoras()) {
-      detalles.append("- ")
-              .append(computadora.getDescripcion())
-              .append(" | Precio: $")
-              .append(computadora.getPrecio())
-              .append("\n");
+    System.out.println("\nOrden ID: " + orden.getIdOrden());
+    System.out.println("Cliente: " + orden.getCliente().getNombre());
+    System.out.println("Fecha: " + orden.getFechaOrden());
+    System.out.println("Estado: " + orden.getEstado());
+    System.out.println("\nComputadoras en la orden:\n");
+    for (Computadora computadora : orden.ordenComputadoras) {
+      System.out.println(computadora);
     }
-    
-    detalles.append("\nTotal: $").append(calcularTotalOrden(orden)).append("\n");
-    
-    return detalles.toString();
+    System.out.println("Total de la orden: $" + calcularTotalOrden(orden));
+    return null;
   }
   
   

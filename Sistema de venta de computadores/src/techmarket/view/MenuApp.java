@@ -1,5 +1,6 @@
 package techmarket.view;
 
+import techmarket.model.orden.Orden;
 import techmarket.services.ClienteService;
 import techmarket.services.ComputadoraService;
 import techmarket.services.Inventarioservice;
@@ -157,8 +158,7 @@ public class MenuApp {
   
   private void opcionMostrarOrdenes(){
     int idOrden = InputReader.readInt("Ingresa el id de la orden: ");
-    String detalles = OrdenService.mostrarDetallesOrden(idOrden);
-    System.out.println(detalles);
+    System.out.println(OrdenService.mostrarDetallesOrden(idOrden));
   }
   
   

@@ -1,6 +1,5 @@
 package techmarket.services;
 
-import com.google.gson.internal.bind.util.ISO8601Utils;
 import techmarket.model.computadora.Computadora;
 import techmarket.model.dispositivos.Monitor;
 import techmarket.model.dispositivos.Mouse;
@@ -10,6 +9,7 @@ import techmarket.utils.InputReader;
 import static techmarket.model.inventario.Inventario.*;
 
 public class Inventarioservice {
+  
   // ===========================================
   // Agregar stock
   // ===========================================
@@ -88,7 +88,6 @@ public class Inventarioservice {
   
   
   
-  
   // ===========================================
   // Disponibilidad de stock
   // ===========================================
@@ -117,7 +116,6 @@ public class Inventarioservice {
   }
   
   
-  
   // ==========================================================
   // Descontar Stock
   // ==========================================================
@@ -144,8 +142,6 @@ public class Inventarioservice {
     System.out.println("Stock descontado correctamente.");
     return true;
   }
-  
-  
   
   
   // =========================================================
@@ -191,7 +187,6 @@ public class Inventarioservice {
       System.out.println("No se encontró un mouse con el ID proporcionado.");
     }
   }
-  
   
   
   public static void eliminarMonitor(){
@@ -272,6 +267,71 @@ public class Inventarioservice {
   }
   
   
+  // ========================================================
+  // Buscar por marca
+  // ========================================================
+  
+  // buscar monitor
+  public static  Monitor getMonitor(String marca){
+    Monitor m = null;
+    
+    for (Monitor monitor : monitores){
+      
+      if (monitor.getMarca().equalsIgnoreCase(marca)){
+        m = monitor;
+        break;
+      }
+    }
+    
+    if (m == null){
+      System.out.println("No hay monitor marca " + marca);
+      return null;
+    }
+    return  m;
+  }
+  
+  
+  // buscar teclado
+  public static Teclado getTeclado (String marca){
+    Teclado t = null;
+    
+    for( Teclado teclado : teclados){
+      
+      if (teclado.getMarca().equalsIgnoreCase(marca)){
+        t = teclado;
+        break;
+      }
+    }
+    
+    if (t == null) {
+      System.out.println("No hay teclado marca " + marca);
+      return null;
+    }
+    
+    return t;
+  }
+  
+  
+  // buscar mouse
+  public static Mouse getMouse(String marca) {
+    Mouse mouse = null;
+    
+    for (Mouse mou : mouses){
+      if( mou.getMarca().equalsIgnoreCase("Genius") && mou.getCantidadBotones() == 2){
+        mouse = mou;
+        break;
+      }
+    }
+    
+    if (mouse == null){
+      System.out.println("No hay Mouses marca Genius de 2 botones.");
+      return null;
+    }
+    
+    return mouse;
+  }
+  
+  
   
   // =========================================================
   // Método para mostrar el inventario completo
@@ -304,7 +364,7 @@ public class Inventarioservice {
     System.out.println("\n----- Inventario de Monitores -----");
     
     if (monitores.isEmpty()){
-      ;
+      System.out.println("\nNo hay articulos en el inventario");
     }
     
     for (Monitor monitor : monitores) {

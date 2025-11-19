@@ -39,13 +39,17 @@ public class Monitor extends DispositivosDeEntrada {
     }
   }
   
+  
+  
   @Override
   public double getPrecio() {
     return precio;
   }
   
+  
+  
   @Override
   public String toString() {
-    return "id: " + getIdMonitor() + " " + super.toString() + ", Tamaño: " + tamanio + " pulgadas , Precio: " + getPrecio();
+    return "id: " + getIdMonitor() + " " + super.toString() + ", Tamaño: " + getTamanio() + " pulgadas , Precio: " + getPrecio();
   }
 }

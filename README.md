@@ -114,5 +114,55 @@ Durante el desarrollo se ejecutaron diferentes pruebas para garantizar el correc
 ## Evidencia y Resultados
 El programa compila correctamente y genera salidas coherentes  que reflejan la estructura de los objetos creados. Cada prueba evidencia que las clases se relacionan correctamente mediante herencia y composición.
 
+### Capturas de pantalla
+
+- Menú principal
+
+![Menu principal](Sistema%20de%20venta%20de%20computadores/public/assets/Menu%20principal.png)
+
+- Menú gestion de inventario
+
+![Menú gestion de inventario](Sistema%20de%20venta%20de%20computadores/public/assets/Menu%20gestion%20de%20inventario.png)
+
+- Respuesta listar inventario vacio
+
+![respuesta inventario vacio](Sistema%20de%20venta%20de%20computadores/public/assets/Respuesta%20listar%20inventario%20vacio.png)
+
+- Respuesta agregar teclado
+
+![respuesta agregar teclado](Sistema%20de%20venta%20de%20computadores/public/assets/opcion%202%20agregar%20teclado.png)
+
+- Respuesta al eliminar tecladoo
+
+![eliminar teclado](Sistema%20de%20venta%20de%20computadores/public/assets/Respuesta%20al%20eliminar%20teclado.png)
+
+- Respuesta inventario
+
+![inventario](Sistema%20de%20venta%20de%20computadores/public/assets/Respuesta%20listar%20inventario%20lleno.png)
+
+- Menú gestion de clientes
+
+![menu clientes](Sistema%20de%20venta%20de%20computadores/public/assets/Menu%20clientes.png)
+
+- Respuesta agregar cliente
+
+![agregar cliente](Sistema%20de%20venta%20de%20computadores/public/assets/Respuesta%20agregar%20cliente.png)
+
+- Respuesta buscar cliente por ID
+
+![buscar por id](Sistema%20de%20venta%20de%20computadores/public/assets/Respuesta%20buscar%20cliente%20por%20ID.png)
+
+- Respuesta eliminar cliente
+
+![eliminar cliente](Sistema%20de%20venta%20de%20computadores/public/assets/Respuesta%20al%20eliminar%20cliente.png)
+
+- Menú crear computadora
+
+![menu crear computadora](Sistema%20de%20venta%20de%20computadores/public/assets/Menu%20crear%20computadora.png)
+
+- respuesta crear computadora
+
+![respuesta crea computadora](Sistema%20de%20venta%20de%20computadores/public/assets/Respuesta%20crear%20computadora%20prediseñada.png)
+
 ## AUTOR
 - **Nombre**: Yesid F. Londoño Martinez.

@@ -11,6 +11,7 @@ import techmarket.utils.Validador;
 import java.util.List;
 
 import static techmarket.model.inventario.Inventario.*;
+import static techmarket.services.Inventarioservice.*;
 
 public class ComputadoraService {
   
@@ -20,61 +21,27 @@ public class ComputadoraService {
   
   // Computadora generica
   public void crearComputadora(){
-    Monitor m = null;
-    Teclado t = null;
-    Mouse mouse = null;
     
     // Buscar monitor Genius
-    for (Monitor monitor : monitores){
-      
-      if (monitor.getMarca().equalsIgnoreCase("Genius") && monitor.getTamanio() == 24){
-        m = monitor;
-        break;
-      }
-    }
-    
-    if (m == null){
-      System.out.println("No hay monitor marca Genius de 24 pulgadas disponible.");
-      return;
-    }
-    
+    Monitor monitor = getMonitor("genius");
     
     // Buscar Teclado Genius
-    for( Teclado teclado : teclados){
-      
-      if (teclado.getMarca().equalsIgnoreCase("Genius") && teclado.getTipoTeclado().equalsIgnoreCase("membrana")){
-        t = teclado;
-        break;
-      }
-    }
-    
-    if (t == null) {
-      System.out.println("No hay teclado marca Genius de membrana.");
-      return;
-    }
+    Teclado teclado = getTeclado("genius");
     
     
     // Buscar mouse genius
-    for (Mouse mou : mouses){
-       if( mou.getMarca().equalsIgnoreCase("Genius") && mou.getCantidadBotones() == 2){
-         mouse = mou;
-         break;
-       }
-    }
-    
-    if (mouse == null){
-      System.out.println("No hay Maus marca Genius de 2 botones.");
-      return;
-    }
-    
+    Mouse mouse = getMouse("genius");
     // validar stock real
-    if (Inventarioservice.hayStockComputadores(m.getMarca(),t.getMarca(),mouse.getMarca(), 1)) {
+    assert monitor != null;
+    assert teclado != null;
+    assert mouse != null;
+    if (Inventarioservice.hayStockComputadores(monitor.getMarca(), teclado.getMarca(), mouse.getMarca(), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora.");
       return;
     }
     
     // descontar del inventario
-    boolean descontado = Inventarioservice.descontarStock(m,t,mouse);
+    boolean descontado = Inventarioservice.descontarStock(monitor,teclado,mouse);
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
@@ -93,71 +60,37 @@ public class ComputadoraService {
     }
     
     // crear computadora
-    Computadora computadora = new Computadora(m, t, mouse, precio);
+    Computadora computadora = new Computadora(monitor, teclado, mouse, precio);
     
     computadoras.add(computadora);
-    System.out.println("Computadora creada exitosamente: " + computadora);
+    double precioFinal = calcularPrecioFinal(computadora);
+    computadora.setPrecio(precioFinal);
+    
+    System.out.println("Computadora creada exitosamente:\n" + computadora +"\nPrecio Final: $" + precioFinal);
   }
   
   
   // Computadora Ofimatica
   public void crearComputadoraOfimatica(){
     
-    Monitor m = null;
-    Teclado t = null;
-    Mouse mouse = null;
-    
     // Buscar monitor Samsung
-    for (Monitor monitor : monitores){
-      
-      if (monitor.getMarca().equalsIgnoreCase("Samsung") && monitor.getTamanio() == 27){
-        m = monitor;
-        break;
-      }
-    }
-    
-    if (m == null){
-      System.out.println("No hay monitor marca Samsung de 27 pulgadas disponible.");
-      return;
-    }
-    
+    Monitor monitor = getMonitor("samsung");
     
     // Buscar Teclado Samsung
-    for( Teclado teclado : teclados){
-      
-      if (teclado.getMarca().equalsIgnoreCase("Samsung") && teclado.getTipoTeclado().equalsIgnoreCase("membrana")){
-        t = teclado;
-        break;
-      }
-    }
-    
-    if (t == null) {
-      System.out.println("No hay teclado marca Samsung de membrana.");
-      return;
-    }
+    Teclado teclado = getTeclado("samsung");
     
     
     // Buscar mouse Samsung
-    for (Mouse mou : mouses){
-      if( mou.getMarca().equalsIgnoreCase("Samsung") && mou.getCantidadBotones() == 2){
-        mouse = mou;
-        break;
-      }
-    }
-    
-    if (mouse == null){
-      System.out.println("No hay Maus marca Samsung de 2 botones.");
-      return;
-    }
+    Mouse mouse = getMouse("samsung");
     
     // validar stock real
-    if (Inventarioservice.hayStockComputadores(m.getMarca(),t.getMarca(),mouse.getMarca(), 1)) {
+    if (Inventarioservice.hayStockComputadores(String.valueOf(monitor),String.valueOf(teclado),String.valueOf(mouse), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora.");
       return;
     }
     
     // descontar del inventario
-    boolean descontado = Inventarioservice.descontarStock(m,t,mouse);
+    boolean descontado = Inventarioservice.descontarStock(monitor,teclado,mouse);
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
@@ -176,71 +109,36 @@ public class ComputadoraService {
     }
     
     // crear computadora
-    Computadora computadora = new Computadora(m, t, mouse, precio);
+    Computadora computadora = new Computadora(monitor, teclado, mouse, precio);
     computadoras.add(computadora);
     
-    System.out.println("Computadora creada exitosamente: " + computadora);
+    double precioFinal = calcularPrecioFinal(computadora);
+    computadora.setPrecio(precioFinal);
+    
+    System.out.println("Computadora creada exitosamente:\n" + computadora +"\nPrecio Final: $" + precioFinal);
   }
   
   
   // Computadora Gamer
   public void crearComputadoraGamer(){
     
-    Monitor m = null;
-    Teclado t = null;
-    Mouse mouse = null;
-    
     // Buscar monitor Razer
-    for (Monitor monitor : monitores){
-      
-      if (monitor.getMarca().equalsIgnoreCase( "Razer") && monitor.getTamanio() == 27){
-        m = monitor;
-        break;
-      }
-    }
-    
-    if (m == null){
-      System.out.println("No hay monitor marca Razer de 27 pulgadas disponible.");
-      return;
-    }
-    
+    Monitor monitor = getMonitor("razer");
     
     // Buscar Teclado Razer
-    for( Teclado teclado : teclados){
-      
-      if (teclado.getMarca().equalsIgnoreCase( "Razer") && teclado.getTipoTeclado().equalsIgnoreCase("membrana")){
-        t = teclado;
-        break;
-      }
-    }
-    
-    if (t == null) {
-      System.out.println("No hay teclado marca Razer de membrana.");
-      return;
-    }
-    
+    Teclado teclado = getTeclado("razer");
     
     // Buscar mouse Razer
-    for (Mouse mou : mouses){
-      if( mou.getMarca().equalsIgnoreCase( "Razer") && mou.getCantidadBotones() == 2){
-        mouse = mou;
-        break;
-      }
-    }
-    
-    if (mouse == null){
-      System.out.println("No hay Maus marca Razer de 2 botones.");
-      return;
-    }
+    Mouse mouse = getMouse("razer");
     
     // validar stock real
-    if (Inventarioservice.hayStockComputadores(m.getMarca(),t.getMarca(),mouse.getMarca(), 1)) {
+    if (Inventarioservice.hayStockComputadores(String.valueOf(monitor),String.valueOf(teclado),String.valueOf(mouse), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora.");
       return;
     }
     
     // descontar del inventario
-    boolean descontado = Inventarioservice.descontarStock(m,t,mouse);
+    boolean descontado = Inventarioservice.descontarStock(monitor,teclado,mouse);
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
@@ -259,71 +157,37 @@ public class ComputadoraService {
     }
     
     // crear computadora
-    Computadora computadora = new Computadora(m, t, mouse, precio);
+    Computadora computadora = new Computadora(monitor, teclado, mouse, precio);
     computadoras.add(computadora);
     
-    System.out.println("Computadora creada exitosamente: " + computadora);
+    double precioFinal = calcularPrecioFinal(computadora);
+    computadora.setPrecio(precioFinal);
+    
+    System.out.println("Computadora creada exitosamente:\n" + computadora +"\nPrecio Final: $" + precioFinal);
   }
   
   
   // Computadora estudiantil
   public void crearComputadoraEstudiante(){
     
-    Monitor m = null;
-    Teclado t = null;
-    Mouse mouse = null;
-    
     // Buscar monitor LG
-    for (Monitor monitor : monitores){
-      
-      if (monitor.getMarca().equalsIgnoreCase("LG") && monitor.getTamanio() == 27){
-        m = monitor;
-        break;
-      }
-    }
-    
-    if (m == null){
-      System.out.println("No hay monitor marca LG de 27 pulgadas disponible.");
-      return;
-    }
-    
+    Monitor monitor = getMonitor("LG");
     
     // Buscar Teclado LG
-    for( Teclado teclado : teclados){
-      
-      if (teclado.getMarca().equalsIgnoreCase("LG") && teclado.getTipoTeclado().equalsIgnoreCase("membrana")){
-        t = teclado;
-        break;
-      }
-    }
-    
-    if (t == null) {
-      System.out.println("No hay teclado marca LG de membrana.");
-      return;
-    }
+    Teclado teclado = getTeclado("LG");
     
     
     // Buscar mouse LG
-    for (Mouse mou : mouses){
-      if( mou.getMarca().equalsIgnoreCase("LG") && mou.getCantidadBotones() == 2){
-        mouse = mou;
-        break;
-      }
-    }
-    
-    if (mouse == null){
-      System.out.println("No hay Maus marca LG de 2 botones.");
-      return;
-    }
+   Mouse mouse = getMouse("LG");
     
     // validar stock real
-    if (Inventarioservice.hayStockComputadores(m.getMarca(),t.getMarca(),mouse.getMarca(), 1)) {
+    if (Inventarioservice.hayStockComputadores(String.valueOf(monitor),String.valueOf(teclado),String.valueOf(mouse), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora.");
       return;
     }
     
     // descontar del inventario
-    boolean descontado = Inventarioservice.descontarStock(m,t,mouse);
+    boolean descontado = Inventarioservice.descontarStock(monitor,teclado,mouse);
     
     if (!descontado) {
       System.out.println("Error al descontar el stock del inventario.");
@@ -342,41 +206,27 @@ public class ComputadoraService {
     }
     
     // crear computadora
-    Computadora computadora = new Computadora(m, t, mouse, precio);
+    Computadora computadora = new Computadora(monitor, teclado, mouse, precio);
     computadoras.add(computadora);
+    double precioFinal = calcularPrecioFinal(computadora);
+    computadora.setPrecio(precioFinal);
     
-    System.out.println("Computadora creada exitosamente: " + computadora);
+    System.out.println("Computadora creada exitosamente:\n" + computadora +"\nPrecio Final: $" + precioFinal);
   }
   
   // ==========================================
   // calcular precio final
   // ==========================================
   
-  public double calcularPrecioFinal(List<Computadora> inventario){
-    int idComputadora = InputReader.readInt("Ingrese el ID de la computadora para calcular su precio final: ");
-    
-    Computadora computadora = null;
-    
-    // Buscar la computadora por ID
-    for (Computadora c : inventario) {
-      if (c.getIdComputadora() == idComputadora) {
-        computadora = c;
-        break;
-      }
-    }
-    
-    if (computadora == null) {
-      System.out.println("Computadora con ID " + idComputadora + " no encontrada.");
-      return 0.0;
-    }
+  public double calcularPrecioFinal(Computadora computadora){
     
     double precioTeclado = computadora.getTeclado().getPrecio();
     double precioMouse = computadora.getMouse().getPrecio();
     double precioMonitor = computadora.getMonitor().getPrecio();
     
-    return precioMonitor + precioTeclado + precioMouse;
-    
+    return computadora.getPrecio() + precioMonitor + precioTeclado + precioMouse;
   }
+  
   
   public static Computadora getComputadoraPorId(int idComputadora){
     

@@ -47,6 +47,10 @@ public class Computadora{
     return precio;
   }
   
+  public void setPrecio(double precio) {
+    this.precio = precio;
+  }
+  
   public String getDescripcion() {
     return descripcion;
   }
@@ -57,6 +61,8 @@ public class Computadora{
   
   @Override
   public String toString() {
-    return "Computadora:\n" + "idComputadora: " + idComputadora  + "\nmonitor: " + monitor + "\nteclado: " + teclado + "\nmouse: " + mouse + '\n';
+    return "Computadora:\n" + "id: " + idComputadora  + "\nmonitor: " + monitor + "\nteclado: " + teclado + "\nmouse: " + mouse + '\n';
   }
+  
+  
 }

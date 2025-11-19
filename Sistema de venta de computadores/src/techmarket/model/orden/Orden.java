@@ -2,10 +2,12 @@ package techmarket.model.orden;
 
 import techmarket.model.cliente.Cliente;
 import techmarket.model.computadora.Computadora;
-import techmarket.model.inventario.Inventario;
+import techmarket.services.OrdenService;
 import techmarket.utils.IdGenerator;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static techmarket.model.inventario.Inventario.computadoras;
 
@@ -14,6 +16,7 @@ public class Orden {
   private Cliente cliente;
   private LocalDateTime fechaOrden;
   private EstadoOrden estado = EstadoOrden.PENDIENTE;
+  public List<Computadora> ordenComputadoras = new ArrayList<>();
   
 
   public Orden(Cliente cliente) {
@@ -42,7 +45,7 @@ public class Orden {
   }
   
   public void agregarComputadora(Computadora computadora) {
-    computadoras.add(computadora);
+    ordenComputadoras.add(computadora);
   }
 
   public Cliente getCliente() {
@@ -53,22 +56,11 @@ public class Orden {
     this.cliente = cliente;
   }
 
-  public double calcularTotal() {
+  public static double calcularTotal() {
     double total = 0;
     for (Computadora computadora : computadoras) {
       total += computadora.getPrecio();
     }
     return total;
   }
-
-  public void mostrarOrden() {
-    System.out.println("Orden ID: " + idOrden);
-    System.out.println("Cliente: " + cliente);
-    System.out.println("Computadoras en la orden:\n");
-    for (Computadora computadora : computadoras) {
-      System.out.println(computadora);
-    }
-    System.out.println("Total de la orden: $" + calcularTotal());
-  }
-  
 }
