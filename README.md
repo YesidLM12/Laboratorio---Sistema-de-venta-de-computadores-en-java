@@ -164,5 +164,15 @@ El programa compila correctamente y genera salidas coherentes  que reflejan la e
 
 ![respuesta crea computadora](Sistema%20de%20venta%20de%20computadores/public/assets/Respuesta%20crear%20computadora%20prediseñada.png)
 
-## AUTOR
+- Menú crear orden
+
+![Menú crear orden](Sistema%20de%20venta%20de%20computadores/public/assets/Menu%20crear%20orden.png)
+
+- Respuesta crear orden 
+
+![Respuesta crea orden](Sistema%20de%20venta%20de%20computadores/public/assets/Respuesta%20crear%20orden.png)
+
+## Autores
 - **Nombre**: Yesid F. Londoño Martinez.
+- **Nombre**: Erica johana valoyes vivas
+- -- **Nombre**: Wilderm Mateo Zapata
