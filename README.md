@@ -5,6 +5,8 @@ El proyecto integra conceptos como herencia, composición, encapsulamiento, mane
 
 La aplicación simula el funcionamiento básico de una tienda de equipos de cómputo: permite gestionar dispositivos, ensamblar computadoras, administrar clientes, registrar órdenes de compra, manejar inventario y persistir información. Todo esto desde una interfaz interactiva por consola.
 
+- ***El proyecto fue desarrollado con el SDK Java SE 25***
+
 ## Funcionalidades principales
 El sistema permite:
 
