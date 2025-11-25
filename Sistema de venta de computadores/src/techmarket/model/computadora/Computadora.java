@@ -5,8 +5,6 @@ import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
 import techmarket.utils.IdGenerator;
 
-import java.util.List;
-
 
 public class Computadora{
   
@@ -16,7 +14,6 @@ public class Computadora{
   private final Teclado teclado;
   private final Mouse mouse;
   private String descripcion;
-  private static final List<Computadora> computadoras = new java.util.ArrayList<>();
   
   public Computadora(Monitor monitor, Teclado teclado, Mouse mouse, double precio) {
     this.idComputadora = IdGenerator.generarIdComputadora();

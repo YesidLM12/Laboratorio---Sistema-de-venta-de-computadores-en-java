@@ -2,7 +2,6 @@ package techmarket.model.orden;
 
 import techmarket.model.cliente.Cliente;
 import techmarket.model.computadora.Computadora;
-import techmarket.services.OrdenService;
 import techmarket.utils.IdGenerator;
 
 import java.time.LocalDateTime;
@@ -62,5 +61,15 @@ public class Orden {
       total += computadora.getPrecio();
     }
     return total;
+  }
+
+  public String mostrarDetallesOrden() {
+    return "Orden ID: " + idOrden + "\n" +
+           "Cliente: " + cliente.getNombre() + "\n" +
+           "Fecha: " + fechaOrden + "\n" +
+           "Estado: " + estado + "\n" +
+           "\nComputadoras en la orden:\n" +
+           ordenComputadoras + "\n" +
+           "Total de la orden: $" + calcularTotal();
   }
 }

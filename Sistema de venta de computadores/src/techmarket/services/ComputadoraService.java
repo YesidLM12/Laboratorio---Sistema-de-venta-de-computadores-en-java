@@ -4,11 +4,8 @@ import techmarket.model.computadora.Computadora;
 import techmarket.model.dispositivos.Monitor;
 import techmarket.model.dispositivos.Mouse;
 import techmarket.model.dispositivos.Teclado;
-import techmarket.model.inventario.Inventario.*;
 import techmarket.utils.InputReader;
 import techmarket.utils.Validador;
-
-import java.util.List;
 
 import static techmarket.model.inventario.Inventario.*;
 import static techmarket.services.Inventarioservice.*;
@@ -20,21 +17,27 @@ public class ComputadoraService {
   // ==========================================
   
   // Computadora generica
-  public void crearComputadora(){
+  public void crearComputadoraCustoms(){
     
-    // Buscar monitor Genius
-    Monitor monitor = getMonitor("genius");
+    String marcaMonitor = InputReader.readString("Ingrese la marca del monitor");
+    String marcaTeclado = InputReader.readString("Ingrese la marca del teclado");
+    String marcaMouse = InputReader.readString("Ingrese la marca del mouse");
     
-    // Buscar Teclado Genius
-    Teclado teclado = getTeclado("genius");
+    // Buscar monitor 
+    Monitor monitor = getMonitor(marcaMonitor);
     
+    // Buscar Teclado 
+    Teclado teclado = getTeclado(marcaTeclado);
     
-    // Buscar mouse genius
-    Mouse mouse = getMouse("genius");
+    // Buscar mouse 
+    Mouse mouse = getMouse(marcaMouse);
+
     // validar stock real
-    assert monitor != null;
-    assert teclado != null;
-    assert mouse != null;
+    if(monitor == null || teclado == null || mouse == null){
+      System.out.println("No se encontro el monitor, teclado o mouse.");
+      return;
+    }
+   
     if (Inventarioservice.hayStockComputadores(monitor.getMarca(), teclado.getMarca(), mouse.getMarca(), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora.");
       return;
@@ -84,6 +87,10 @@ public class ComputadoraService {
     Mouse mouse = getMouse("samsung");
     
     // validar stock real
+     if(monitor == null || teclado == null || mouse == null){
+      System.out.println("No se encontro el monitor, teclado o mouse.");
+      return;
+    }
     if (Inventarioservice.hayStockComputadores(String.valueOf(monitor),String.valueOf(teclado),String.valueOf(mouse), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora.");
       return;
@@ -132,6 +139,11 @@ public class ComputadoraService {
     Mouse mouse = getMouse("razer");
     
     // validar stock real
+     if(monitor == null || teclado == null || mouse == null){
+      System.out.println("No se encontro el monitor, teclado o mouse.");
+      return;
+    }
+    
     if (Inventarioservice.hayStockComputadores(String.valueOf(monitor),String.valueOf(teclado),String.valueOf(mouse), 1)) {
       System.out.println("No hay stock suficiente para crear la computadora.");
       return;

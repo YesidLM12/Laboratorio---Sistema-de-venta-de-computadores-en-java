@@ -1,6 +1,5 @@
 package techmarket.view;
 
-import techmarket.model.orden.Orden;
 import techmarket.services.ClienteService;
 import techmarket.services.ComputadoraService;
 import techmarket.services.Inventarioservice;
@@ -12,7 +11,6 @@ public class MenuApp {
   
   private final ComputadoraService computadoraService = new ComputadoraService();
   private final Inventarioservice inventarioservice = new Inventarioservice();
-  private final ClienteService clienteService = new ClienteService();
   private final OrdenService ordenService = new OrdenService();
   
   
@@ -122,7 +120,7 @@ public class MenuApp {
       opcion = InputReader.readInt("Seleccione una opción: ");
       
       switch (opcion) {
-         case 1 -> computadoraService.crearComputadora();
+         case 1 -> computadoraService.crearComputadoraCustoms();
          case 2 -> computadoraService.crearComputadoraGamer();
          case 3 -> computadoraService.crearComputadoraOfimatica();
          case 4 -> computadoraService.crearComputadoraEstudiante();

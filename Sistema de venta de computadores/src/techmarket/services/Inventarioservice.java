@@ -317,7 +317,7 @@ public class Inventarioservice {
     Mouse mouse = null;
     
     for (Mouse mou : mouses){
-      if( mou.getMarca().equalsIgnoreCase("Genius") && mou.getCantidadBotones() == 2){
+      if( mou.getMarca().equalsIgnoreCase(marca)){
         mouse = mou;
         break;
       }

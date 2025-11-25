@@ -1,6 +1,5 @@
 package techmarket.model.dispositivos;
 
-import techmarket.utils.IdGenerator;
 
 public class DispositivosDeEntrada {
   // Atributos

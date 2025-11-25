@@ -207,7 +207,7 @@ public class OrdenService {
     
     for (Orden orden : ordenes) {
       if (orden.getIdOrden() == idOrden) {
-        System.out.println("Orden encontrada: \n " + orden);
+        System.out.println("Orden encontrada: \n " + orden.mostrarDetallesOrden());
         return;
       }
     }
