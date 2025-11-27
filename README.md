@@ -174,7 +174,3 @@ El programa compila correctamente y genera salidas coherentes  que reflejan la e
 
 ![Respuesta crea orden](Sistema%20de%20venta%20de%20computadores/public/assets/Respuesta%20crear%20orden.png)
 
-## Autores
-- **Nombre**: Yesid F. Londoño Martinez.
-- **Nombre**: Erica johana valoyes vivas
-- -- **Nombre**: Wilderm Mateo Zapata
